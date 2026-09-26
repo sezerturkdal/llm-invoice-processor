@@ -3,3 +3,25 @@
 GET {{InvoiceProcessor.Api_HostAddress}}/health
 
 ###
+
+# Upload an invoice. Point the path at any PDF, PNG or JPEG on disk.
+# @name upload
+POST {{InvoiceProcessor.Api_HostAddress}}/api/invoices
+Content-Type: multipart/form-data; boundary=InvoiceBoundary
+
+--InvoiceBoundary
+Content-Disposition: form-data; name="file"; filename="sample.pdf"
+Content-Type: application/pdf
+
+< ../../evals/samples/sample.pdf
+--InvoiceBoundary--
+
+###
+
+GET {{InvoiceProcessor.Api_HostAddress}}/api/invoices/{{upload.response.body.$.id}}
+
+###
+
+GET {{InvoiceProcessor.Api_HostAddress}}/api/invoices/{{upload.response.body.$.id}}/file
+
+###
