@@ -485,6 +485,14 @@ $RECYCLE.BIN/
 .env
 uploads/
 
+# Real invoices stay local; only synthetic samples (synthetic-*) are committed.
+evals/samples/*
+!evals/samples/.gitkeep
+!evals/samples/synthetic-*
+evals/expected/*
+!evals/expected/.gitkeep
+!evals/expected/synthetic-*
+
 # Local assistant notes
 CLAUDE.md
 CLAUDE.local.md
