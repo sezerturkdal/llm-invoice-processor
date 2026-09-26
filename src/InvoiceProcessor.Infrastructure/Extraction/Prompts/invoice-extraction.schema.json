@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "supplier": { "type": ["string", "null"] },
+    "invoiceNumber": { "type": ["string", "null"] },
+    "date": { "type": ["string", "null"], "format": "date" },
+    "currency": { "type": ["string", "null"] },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "qty": { "type": "number" },
+          "unitPrice": { "type": "number" },
+          "lineTotal": { "type": "number" }
+        },
+        "required": ["description", "qty", "unitPrice", "lineTotal"],
+        "additionalProperties": false
+      }
+    },
+    "net": { "type": ["number", "null"] },
+    "vat": { "type": ["number", "null"] },
+    "total": { "type": ["number", "null"] }
+  },
+  "required": ["supplier", "invoiceNumber", "date", "currency", "lines", "net", "vat", "total"],
+  "additionalProperties": false
+}
