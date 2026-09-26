@@ -1,3 +1,4 @@
+using InvoiceProcessor.Api.Processing;
 using InvoiceProcessor.Core.Files;
 using InvoiceProcessor.Core.Invoices;
 using InvoiceProcessor.Infrastructure.Persistence;
@@ -28,6 +29,7 @@ public static class InvoiceEndpoints
             .WithMetadata(new RequestSizeLimitAttribute(uploadOptions.MaxFileSizeBytes + MultipartOverheadBytes));
         group.MapGet("/{id:guid}", GetById);
         group.MapGet("/{id:guid}/file", GetFile);
+        group.MapPost("/{id:guid}/extract", Reextract);
 
         return app;
     }
@@ -37,6 +39,7 @@ public static class InvoiceEndpoints
         InvoiceProcessorDbContext db,
         IFileStorage storage,
         IOptions<UploadOptions> uploadOptions,
+        InvoiceProcessingQueue queue,
         TimeProvider timeProvider,
         CancellationToken cancellationToken)
     {
@@ -84,7 +87,40 @@ public static class InvoiceEndpoints
             throw;
         }
 
+        // Extraction runs in the background; the client polls the invoice until it leaves Processing.
+        queue.Enqueue(invoice.Id);
+
         return TypedResults.Created($"/api/invoices/{invoice.Id}", InvoiceResponse.From(invoice));
+    }
+
+    // Runs extraction again, e.g. after a failure or a prompt or model change.
+    private static async Task<Results<Accepted<InvoiceResponse>, NotFound, Conflict<ProblemDetails>>> Reextract(
+        Guid id,
+        InvoiceProcessorDbContext db,
+        InvoiceProcessingQueue queue,
+        CancellationToken cancellationToken)
+    {
+        var invoice = await db.Invoices.FirstOrDefaultAsync(i => i.Id == id, cancellationToken);
+        if (invoice is null)
+        {
+            return TypedResults.NotFound();
+        }
+
+        if (invoice.Status is not (InvoiceStatus.Failed or InvoiceStatus.PendingReview))
+        {
+            return TypedResults.Conflict(new ProblemDetails
+            {
+                Title = "Invoice cannot be re-extracted",
+                Detail = $"Only failed invoices or invoices pending review can be re-extracted; this one is {invoice.Status}.",
+                Status = StatusCodes.Status409Conflict,
+            });
+        }
+
+        invoice.Status = InvoiceStatus.Processing;
+        await db.SaveChangesAsync(cancellationToken);
+        queue.Enqueue(invoice.Id);
+
+        return TypedResults.Accepted($"/api/invoices/{invoice.Id}", InvoiceResponse.From(invoice));
     }
 
     private static async Task<Results<Ok<InvoiceResponse>, NotFound>> GetById(

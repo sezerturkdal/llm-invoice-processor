@@ -12,5 +12,8 @@ public class ExtractionLog
     public long LatencyMs { get; set; }
     public decimal? CostEstimate { get; set; }
     public string? RawResponse { get; set; }
+
+    /// <summary>Why the extraction failed; null when it succeeded.</summary>
+    public string? Error { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 }

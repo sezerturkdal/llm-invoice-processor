@@ -25,3 +25,8 @@ GET {{InvoiceProcessor.Api_HostAddress}}/api/invoices/{{upload.response.body.$.i
 GET {{InvoiceProcessor.Api_HostAddress}}/api/invoices/{{upload.response.body.$.id}}/file
 
 ###
+
+# Run extraction again (only for Failed or PendingReview invoices).
+POST {{InvoiceProcessor.Api_HostAddress}}/api/invoices/{{upload.response.body.$.id}}/extract
+
+###

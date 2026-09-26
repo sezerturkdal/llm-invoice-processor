@@ -14,5 +14,6 @@ public class ExtractionLogConfiguration : IEntityTypeConfiguration<ExtractionLog
         builder.Property(e => e.Model).HasMaxLength(128).IsRequired();
         builder.Property(e => e.CostEstimate).HasPrecision(18, 6);
         builder.Property(e => e.RawResponse); // nvarchar(max) by default
+        builder.Property(e => e.Error).HasMaxLength(2000);
     }
 }

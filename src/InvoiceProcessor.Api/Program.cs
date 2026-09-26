@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using InvoiceProcessor.Api.Invoices;
+using InvoiceProcessor.Api.Processing;
 using InvoiceProcessor.Infrastructure;
 using InvoiceProcessor.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,10 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.Configure<UploadOptions>(builder.Configuration.GetSection(UploadOptions.SectionName));
+
+builder.Services.AddSingleton<InvoiceProcessingQueue>();
+builder.Services.AddScoped<InvoiceExtractionPipeline>();
+builder.Services.AddHostedService<InvoiceProcessingWorker>();
 
 var app = builder.Build();
 
