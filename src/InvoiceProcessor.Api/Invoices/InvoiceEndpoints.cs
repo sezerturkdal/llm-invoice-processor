@@ -11,7 +11,7 @@ namespace InvoiceProcessor.Api.Invoices;
 
 public static class InvoiceEndpoints
 {
-    private const int MaxFileNameLength = 260;
+    private const int MaxPageSize = 100;
 
     // Room for the multipart boundaries and part headers around the file itself.
     private const long MultipartOverheadBytes = 64 * 1024;
@@ -27,6 +27,8 @@ public static class InvoiceEndpoints
         group.MapPost("/", Upload)
             .DisableAntiforgery()
             .WithMetadata(new RequestSizeLimitAttribute(uploadOptions.MaxFileSizeBytes + MultipartOverheadBytes));
+        group.MapGet("/", List);
+        group.MapGet("/suppliers", ListSuppliers);
         group.MapGet("/{id:guid}", GetById);
         group.MapGet("/{id:guid}/file", GetFile);
         group.MapPost("/{id:guid}/extract", Reextract);
@@ -123,6 +125,56 @@ public static class InvoiceEndpoints
         return TypedResults.Accepted($"/api/invoices/{invoice.Id}", InvoiceResponse.From(invoice));
     }
 
+    // Dashboard list, newest first. Supplier matches as a substring (case-insensitive by column collation).
+    private static async Task<Ok<InvoiceListResponse>> List(
+        InvoiceProcessorDbContext db,
+        CancellationToken cancellationToken,
+        InvoiceStatus? status = null,
+        string? supplier = null,
+        int page = 1,
+        int pageSize = 25)
+    {
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, MaxPageSize);
+
+        var query = db.Invoices.AsNoTracking();
+        if (status is not null)
+        {
+            query = query.Where(i => i.Status == status);
+        }
+
+        if (!string.IsNullOrWhiteSpace(supplier))
+        {
+            var term = supplier.Trim();
+            query = query.Where(i => i.Supplier != null && i.Supplier.Contains(term));
+        }
+
+        var totalCount = await query.CountAsync(cancellationToken);
+        var items = await query
+            .OrderByDescending(i => i.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Select(i => new InvoiceSummary(
+                i.Id, i.FileName, i.Status, i.Supplier, i.InvoiceNumber, i.Date, i.Currency, i.Total,
+                i.ValidationIssues.Count, i.CreatedAt, i.ReviewedAt))
+            .ToListAsync(cancellationToken);
+
+        return TypedResults.Ok(new InvoiceListResponse(items, totalCount, page, pageSize));
+    }
+
+    // Distinct supplier names for the dashboard filter.
+    private static async Task<Ok<List<string>>> ListSuppliers(InvoiceProcessorDbContext db, CancellationToken cancellationToken)
+    {
+        var suppliers = await db.Invoices
+            .Where(i => i.Supplier != null)
+            .Select(i => i.Supplier!)
+            .Distinct()
+            .OrderBy(s => s)
+            .ToListAsync(cancellationToken);
+
+        return TypedResults.Ok(suppliers);
+    }
+
     private static async Task<Results<Ok<InvoiceResponse>, NotFound>> GetById(
         Guid id,
         InvoiceProcessorDbContext db,
@@ -180,6 +232,6 @@ public static class InvoiceEndpoints
             return $"invoice{fileType.Extension}";
         }
 
-        return name.Length <= MaxFileNameLength ? name : name[..MaxFileNameLength];
+        return name.Length <= InvoiceFieldLimits.FileName ? name : name[..InvoiceFieldLimits.FileName];
     }
 }

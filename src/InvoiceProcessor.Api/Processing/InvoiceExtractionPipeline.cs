@@ -1,3 +1,4 @@
+using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Core.Extraction;
 using InvoiceProcessor.Core.Files;
 using InvoiceProcessor.Core.Invoices;
@@ -11,6 +12,7 @@ public sealed class InvoiceExtractionPipeline(
     InvoiceProcessorDbContext db,
     IFileStorage storage,
     IInvoiceExtractor extractor,
+    InvoiceValidationService validation,
     TimeProvider timeProvider,
     ILogger<InvoiceExtractionPipeline> logger)
 {
@@ -20,6 +22,8 @@ public sealed class InvoiceExtractionPipeline(
     {
         var invoice = await db.Invoices
             .Include(i => i.Lines)
+            .Include(i => i.ValidationIssues)
+            .AsSplitQuery()
             .FirstOrDefaultAsync(i => i.Id == invoiceId, cancellationToken);
 
         // Already handled, e.g. queued both by the upload and by the startup recovery.
@@ -44,11 +48,13 @@ public sealed class InvoiceExtractionPipeline(
             var result = await extractor.ExtractAsync(new InvoiceDocument(content, fileType), cancellationToken);
 
             invoice.ApplyExtraction(result.Invoice, result.Usage.Model);
+            await validation.ValidateAsync(invoice, cancellationToken);
             AddLog(invoice, result.Usage, error: null);
 
             logger.LogInformation(
-                "Extracted invoice {InvoiceId} with {Model}: {InputTokens} in / {OutputTokens} out tokens, {LatencyMs} ms, ${Cost}",
-                invoice.Id, result.Usage.Model, result.Usage.InputTokens, result.Usage.OutputTokens, result.Usage.LatencyMs, result.Usage.CostEstimate);
+                "Extracted invoice {InvoiceId} with {Model}: {InputTokens} in / {OutputTokens} out tokens, {LatencyMs} ms, ${Cost}, {IssueCount} validation issues",
+                invoice.Id, result.Usage.Model, result.Usage.InputTokens, result.Usage.OutputTokens, result.Usage.LatencyMs, result.Usage.CostEstimate,
+                invoice.ValidationIssues.Count);
         }
         catch (Exception ex) when (ex is not OperationCanceledException || !cancellationToken.IsCancellationRequested)
         {

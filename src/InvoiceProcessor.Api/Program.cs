@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using InvoiceProcessor.Api.Invoices;
 using InvoiceProcessor.Api.Processing;
+using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Infrastructure;
 using InvoiceProcessor.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,13 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.Configure<UploadOptions>(builder.Configuration.GetSection(UploadOptions.SectionName));
 
+// The React app runs on its own origin (Vite dev server, or the web container).
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+    policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod()));
+
 builder.Services.AddSingleton<InvoiceProcessingQueue>();
+builder.Services.AddScoped<InvoiceValidationService>();
 builder.Services.AddScoped<InvoiceExtractionPipeline>();
 builder.Services.AddHostedService<InvoiceProcessingWorker>();
 
@@ -42,9 +49,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+// Before the HTTPS redirect, so CORS preflight requests are answered rather than redirected.
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.MapHealthChecks("/health");
 app.MapInvoiceEndpoints();
+app.MapInvoiceReviewEndpoints();
 
 app.Run();
