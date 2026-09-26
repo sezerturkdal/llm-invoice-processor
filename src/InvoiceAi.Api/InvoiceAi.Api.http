@@ -1,5 +1,0 @@
-@InvoiceAi.Api_HostAddress = http://localhost:5098
-
-GET {{InvoiceAi.Api_HostAddress}}/health
-
-###

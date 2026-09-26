@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/evals/">
+    <Project Path="evals/InvoiceProcessor.Evals/InvoiceProcessor.Evals.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/InvoiceProcessor.Api/InvoiceProcessor.Api.csproj" />
+    <Project Path="src/InvoiceProcessor.Core/InvoiceProcessor.Core.csproj" />
+    <Project Path="src/InvoiceProcessor.Infrastructure/InvoiceProcessor.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/InvoiceProcessor.Core.Tests/InvoiceProcessor.Core.Tests.csproj" />
+  </Folder>
+</Solution>

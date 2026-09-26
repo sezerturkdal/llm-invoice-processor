@@ -1,0 +1,5 @@
+@InvoiceProcessor.Api_HostAddress = http://localhost:5098
+
+GET {{InvoiceProcessor.Api_HostAddress}}/health
+
+###
