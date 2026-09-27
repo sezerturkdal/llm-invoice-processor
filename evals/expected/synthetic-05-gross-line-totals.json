@@ -1,0 +1,31 @@
+{
+  "supplier": "Cloverfield Electronics Ltd",
+  "invoiceNumber": "CFE-26-01188",
+  "date": "2026-05-14",
+  "currency": "EUR",
+  "lines": [
+    {
+      "description": "USB-C docking station, 11-in-1",
+      "qty": 2,
+      "unitPrice": 149.00,
+      "lineTotal": 366.54
+    },
+    {
+      "description": "27\u0022 QHD monitor, height adjustable",
+      "qty": 1,
+      "unitPrice": 279.00,
+      "lineTotal": 343.17
+    },
+    {
+      "description": "HDMI 2.1 cable, 2 m",
+      "qty": 3,
+      "unitPrice": 12.00,
+      "lineTotal": 44.28
+    }
+  ],
+  "net": 613.00,
+  "vat": 140.99,
+  "total": 753.99,
+  "expectedIssues": [],
+  "purpose": "Unit prices excl. VAT but line totals incl. VAT, so lines sum to the total, not the net"
+}

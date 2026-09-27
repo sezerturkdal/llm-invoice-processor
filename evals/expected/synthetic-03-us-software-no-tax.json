@@ -1,0 +1,25 @@
+{
+  "supplier": "Pinecrest Software LLC",
+  "invoiceNumber": "INV-10077",
+  "date": "2026-03-05",
+  "currency": "USD",
+  "lines": [
+    {
+      "description": "Annual license: Analytics Pro (per seat)",
+      "qty": 5,
+      "unitPrice": 480.00,
+      "lineTotal": 2400.00
+    },
+    {
+      "description": "Onboarding workshop (remote, half day)",
+      "qty": 1,
+      "unitPrice": 750.00,
+      "lineTotal": 750.00
+    }
+  ],
+  "net": 3150.00,
+  "vat": 0.00,
+  "total": 3150.00,
+  "expectedIssues": [],
+  "purpose": "US MM/dd/yyyy date that is ambiguous (03/05), zero tax"
+}

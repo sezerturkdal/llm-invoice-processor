@@ -1,0 +1,27 @@
+{
+  "supplier": "Fernhill Garden Services Ltd",
+  "invoiceNumber": "FGS-0712",
+  "date": "2026-07-31",
+  "currency": "GBP",
+  "lines": [
+    {
+      "description": "Monthly garden maintenance, July",
+      "qty": 1,
+      "unitPrice": 320.00,
+      "lineTotal": 320.00
+    },
+    {
+      "description": "Hedge trimming (hours)",
+      "qty": 3,
+      "unitPrice": 45.00,
+      "lineTotal": 135.00
+    }
+  ],
+  "net": 455.00,
+  "vat": 91.00,
+  "total": 564.00,
+  "expectedIssues": [
+    "NetPlusVatEqualsTotal"
+  ],
+  "purpose": "Printed total has transposed digits (564.00 instead of 546.00); validation must flag it"
+}

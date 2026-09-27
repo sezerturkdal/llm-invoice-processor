@@ -1,0 +1,31 @@
+{
+  "supplier": "Atelier Lumi\u00E8re SARL",
+  "invoiceNumber": "F-2026-0092",
+  "date": "2026-05-07",
+  "currency": "EUR",
+  "lines": [
+    {
+      "description": "Lampe de bureau en laiton",
+      "qty": 2,
+      "unitPrice": 129.00,
+      "lineTotal": 258.00
+    },
+    {
+      "description": "Abat-jour en lin naturel",
+      "qty": 4,
+      "unitPrice": 34.50,
+      "lineTotal": 138.00
+    },
+    {
+      "description": "Frais de livraison",
+      "qty": 1,
+      "unitPrice": 15.00,
+      "lineTotal": 15.00
+    }
+  ],
+  "net": 411.00,
+  "vat": 82.20,
+  "total": 493.20,
+  "expectedIssues": [],
+  "purpose": "Image (PNG) instead of PDF, French labels, month name date (7 mai 2026), space thousands separator"
+}

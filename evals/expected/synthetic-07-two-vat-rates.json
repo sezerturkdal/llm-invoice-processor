@@ -1,0 +1,37 @@
+{
+  "supplier": "Caf\u00E9 Morgenrot KG",
+  "invoiceNumber": "MR-5519",
+  "date": "2026-05-29",
+  "currency": "EUR",
+  "lines": [
+    {
+      "description": "Fr\u00FChst\u00FCcksbuffet, pro Person",
+      "qty": 24,
+      "unitPrice": 14.50,
+      "lineTotal": 348.00
+    },
+    {
+      "description": "Obstplatte, gro\u00DF",
+      "qty": 2,
+      "unitPrice": 28.00,
+      "lineTotal": 56.00
+    },
+    {
+      "description": "Kaffee \u0026 Tee Flatrate, pro Person",
+      "qty": 24,
+      "unitPrice": 3.80,
+      "lineTotal": 91.20
+    },
+    {
+      "description": "Orangensaft, 1 l",
+      "qty": 12,
+      "unitPrice": 4.20,
+      "lineTotal": 50.40
+    }
+  ],
+  "net": 545.60,
+  "vat": 55.18,
+  "total": 600.78,
+  "expectedIssues": [],
+  "purpose": "Two VAT rates (7% food, 19% drinks) that must be summed into one VAT amount"
+}

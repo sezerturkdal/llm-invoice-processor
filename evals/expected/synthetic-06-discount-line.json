@@ -1,0 +1,31 @@
+{
+  "supplier": "Brightwave Studio B.V.",
+  "invoiceNumber": "2026-0147",
+  "date": "2026-06-02",
+  "currency": "EUR",
+  "lines": [
+    {
+      "description": "Website maintenance, Q2 2026",
+      "qty": 1,
+      "unitPrice": 1200.00,
+      "lineTotal": 1200.00
+    },
+    {
+      "description": "Hosting and SSL, 12 months",
+      "qty": 1,
+      "unitPrice": 240.00,
+      "lineTotal": 240.00
+    },
+    {
+      "description": "Loyalty discount 10%",
+      "qty": 1,
+      "unitPrice": -144.00,
+      "lineTotal": -144.00
+    }
+  ],
+  "net": 1296.00,
+  "vat": 272.16,
+  "total": 1568.16,
+  "expectedIssues": [],
+  "purpose": "Discount printed as a negative line"
+}

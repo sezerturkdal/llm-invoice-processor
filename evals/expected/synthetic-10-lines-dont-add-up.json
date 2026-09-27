@@ -1,0 +1,33 @@
+{
+  "supplier": "Summit Coffee Roasters",
+  "invoiceNumber": "SCR-20260815",
+  "date": "2026-08-15",
+  "currency": "USD",
+  "lines": [
+    {
+      "description": "Ethiopia Yirgacheffe, whole bean, 5 lb",
+      "qty": 5,
+      "unitPrice": 72.50,
+      "lineTotal": 362.50
+    },
+    {
+      "description": "Colombia Supremo, whole bean, 5 lb",
+      "qty": 3,
+      "unitPrice": 65.00,
+      "lineTotal": 195.00
+    },
+    {
+      "description": "Freight",
+      "qty": 1,
+      "unitPrice": 30.00,
+      "lineTotal": 30.00
+    }
+  ],
+  "net": 612.50,
+  "vat": 42.88,
+  "total": 655.38,
+  "expectedIssues": [
+    "LinesSumToNetOrTotal"
+  ],
+  "purpose": "Line items sum to 587.50 but the printed subtotal is 612.50; validation must flag it"
+}

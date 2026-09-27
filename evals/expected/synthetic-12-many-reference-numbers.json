@@ -1,0 +1,31 @@
+{
+  "supplier": "Westgate Logistics Ltd",
+  "invoiceNumber": "WL-INV-88213",
+  "date": "2026-06-30",
+  "currency": "GBP",
+  "lines": [
+    {
+      "description": "Pallet storage, June (per pallet-week)",
+      "qty": 64,
+      "unitPrice": 3.25,
+      "lineTotal": 208.00
+    },
+    {
+      "description": "Inbound handling (per pallet)",
+      "qty": 18,
+      "unitPrice": 4.10,
+      "lineTotal": 73.80
+    },
+    {
+      "description": "Outbound handling (per pallet)",
+      "qty": 22,
+      "unitPrice": 4.10,
+      "lineTotal": 90.20
+    }
+  ],
+  "net": 372.00,
+  "vat": 74.40,
+  "total": 446.40,
+  "expectedIssues": [],
+  "purpose": "Invoice number among order, account, PO and delivery note numbers; invoice date among order, delivery and due dates"
+}

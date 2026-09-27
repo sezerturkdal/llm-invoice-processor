@@ -1,0 +1,37 @@
+{
+  "supplier": "Nordlicht B\u00FCrobedarf GmbH",
+  "invoiceNumber": "RE-2026-00418",
+  "date": "2026-03-12",
+  "currency": "EUR",
+  "lines": [
+    {
+      "description": "Kopierpapier A4, 80 g/m\u00B2, 500 Blatt",
+      "qty": 10,
+      "unitPrice": 4.95,
+      "lineTotal": 49.50
+    },
+    {
+      "description": "Toner HP 26A schwarz",
+      "qty": 2,
+      "unitPrice": 89.90,
+      "lineTotal": 179.80
+    },
+    {
+      "description": "Ordner breit, blau",
+      "qty": 25,
+      "unitPrice": 2.49,
+      "lineTotal": 62.25
+    },
+    {
+      "description": "Lieferpauschale",
+      "qty": 1,
+      "unitPrice": 6.90,
+      "lineTotal": 6.90
+    }
+  ],
+  "net": 298.45,
+  "vat": 56.71,
+  "total": 355.16,
+  "expectedIssues": [],
+  "purpose": "German labels, decimal comma, dd.MM.yyyy, symbol after the amount"
+}

@@ -33,8 +33,11 @@ public static class DependencyInjection
         return services;
     }
 
-    // The provider is picked from configuration alone; adding one means a new IInvoiceExtractor and a case here.
-    private static void AddInvoiceExtractor(this IServiceCollection services, IConfiguration configuration)
+    /// <summary>
+    /// Registers the <see cref="IInvoiceExtractor"/> for <c>Llm:Provider</c>. Public so the eval runner
+    /// builds exactly what the API runs. Adding a provider means a new IInvoiceExtractor and a case here.
+    /// </summary>
+    public static IServiceCollection AddInvoiceExtractor(this IServiceCollection services, IConfiguration configuration)
     {
         var llmOptions = configuration.GetSection(LlmOptions.SectionName).Get<LlmOptions>() ?? new LlmOptions();
 
@@ -50,5 +53,7 @@ public static class DependencyInjection
                 throw new InvalidOperationException(
                     $"Unknown Llm:Provider '{llmOptions.Provider}'. Supported: {AnthropicInvoiceExtractor.ProviderName}.");
         }
+
+        return services;
     }
 }

@@ -1,0 +1,31 @@
+{
+  "supplier": "Anadolu Ofis Malzemeleri A.\u015E.",
+  "invoiceNumber": "ANO2026000153",
+  "date": "2026-04-21",
+  "currency": "TRY",
+  "lines": [
+    {
+      "description": "A4 Fotokopi Ka\u011F\u0131d\u0131 (5\u0027li koli)",
+      "qty": 12,
+      "unitPrice": 1149.00,
+      "lineTotal": 13788.00
+    },
+    {
+      "description": "Lazer Yaz\u0131c\u0131 Toneri",
+      "qty": 3,
+      "unitPrice": 2450.00,
+      "lineTotal": 7350.00
+    },
+    {
+      "description": "Masa D\u00FCzenleyici Set",
+      "qty": 5,
+      "unitPrice": 389.90,
+      "lineTotal": 1949.50
+    }
+  ],
+  "net": 23087.50,
+  "vat": 4617.50,
+  "total": 27705.00,
+  "expectedIssues": [],
+  "purpose": "Turkish labels, thousands dot and decimal comma, currency written as TL (ISO code TRY)"
+}

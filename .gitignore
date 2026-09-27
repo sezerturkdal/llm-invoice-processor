@@ -492,6 +492,8 @@ evals/samples/*
 evals/expected/*
 !evals/expected/.gitkeep
 !evals/expected/synthetic-*
+# Eval runs that included real invoices
+evals/results/local/
 
 # Local assistant notes
 CLAUDE.md
