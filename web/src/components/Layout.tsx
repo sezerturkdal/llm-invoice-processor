@@ -1,6 +1,12 @@
-import { Link, NavLink, Outlet, useLocation } from 'react-router'
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router'
+import { useCurrentUser, useLogout } from '../api/auth'
 
 export function Layout() {
+  const { data: user } = useCurrentUser()
+  const logout = useLogout()
+  const navigate = useNavigate()
+  const isAdmin = user?.role === 'Admin'
+
   return (
     <div className="min-h-screen">
       <header className="border-b border-slate-200 bg-white">
@@ -16,8 +22,25 @@ export function Layout() {
             <NavItem to="/" matches={(path) => path === '/' || path.startsWith('/invoices')}>
               Invoices
             </NavItem>
-            <NavItem to="/usage">Usage</NavItem>
+            {isAdmin && <NavItem to="/usage">Usage</NavItem>}
+            {isAdmin && <NavItem to="/users">Users</NavItem>}
           </nav>
+
+          {user && (
+            <div className="ml-auto flex items-center gap-3 text-sm">
+              <span className="hidden text-right leading-tight md:block">
+                <span className="block text-slate-900">{user.email}</span>
+                <span className="block text-xs text-slate-500">{user.role}</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => logout.mutate(undefined, { onSettled: () => navigate('/login', { replace: true }) })}
+                className="rounded-md px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              >
+                Sign out
+              </button>
+            </div>
+          )}
         </div>
       </header>
 

@@ -21,6 +21,7 @@ public class InvoiceConfiguration : IEntityTypeConfiguration<Invoice>
         builder.Property(i => i.Vat).HasPrecision(18, 2);
         builder.Property(i => i.Total).HasPrecision(18, 2);
         builder.Property(i => i.ModelUsed).HasMaxLength(128);
+        builder.Property(i => i.ReviewedBy).HasMaxLength(InvoiceFieldLimits.ReviewedBy);
 
         builder.HasMany(i => i.Lines)
             .WithOne()

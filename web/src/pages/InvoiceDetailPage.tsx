@@ -52,7 +52,13 @@ function ReviewPanel({ invoice }: { invoice: Invoice }) {
       <p className="mt-1 text-xs text-slate-500">
         Uploaded {formatRelative(invoice.createdAt)}
         {invoice.modelUsed && <> · extracted by {invoice.modelUsed}</>}
-        {invoice.reviewedAt && <> · reviewed {formatRelative(invoice.reviewedAt)}</>}
+        {invoice.reviewedAt && (
+          <>
+            {' '}
+            · {invoice.status === 'Rejected' ? 'rejected' : 'approved'}
+            {invoice.reviewedBy && <> by {invoice.reviewedBy}</>} {formatRelative(invoice.reviewedAt)}
+          </>
+        )}
       </p>
       {invoice.lastExtraction?.succeeded && invoice.status !== 'Processing' && <UsageLine usage={invoice.lastExtraction} />}
     </div>

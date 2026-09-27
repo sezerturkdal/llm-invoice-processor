@@ -26,6 +26,9 @@ export async function request<T>(path: string, init?: RequestInit): Promise<T> {
     throw new ApiError(response.status, problem)
   }
 
+  // 204 No Content, e.g. sign-out or a password reset.
+  if (response.status === 204) return undefined as T
+
   return (await response.json()) as T
 }
 

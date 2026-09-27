@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
+using InvoiceProcessor.Api.Auth;
 using InvoiceProcessor.Api.Extractions;
 using InvoiceProcessor.Api.Invoices;
 using InvoiceProcessor.Api.Processing;
+using InvoiceProcessor.Api.Users;
 using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Infrastructure;
 using InvoiceProcessor.Infrastructure.Persistence;
@@ -13,6 +15,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
 builder.Services.AddHealthChecks();
 builder.Services.AddInfrastructure(builder.Configuration, builder.Environment.ContentRootPath);
+builder.Services.AddInvoiceProcessorAuth(builder.Configuration);
 
 builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
@@ -31,11 +34,14 @@ builder.Services.AddHostedService<InvoiceProcessingWorker>();
 
 var app = builder.Build();
 
-if (app.Configuration.GetValue<bool>("Database:MigrateOnStartup"))
+using (var scope = app.Services.CreateScope())
 {
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<InvoiceProcessorDbContext>();
-    await db.Database.MigrateAsync();
+    if (app.Configuration.GetValue<bool>("Database:MigrateOnStartup"))
+    {
+        await scope.ServiceProvider.GetRequiredService<InvoiceProcessorDbContext>().Database.MigrateAsync();
+    }
+
+    await scope.ServiceProvider.GetRequiredService<IdentitySeeder>().SeedAsync();
 }
 
 app.UseExceptionHandler(new ExceptionHandlerOptions
@@ -47,16 +53,23 @@ app.UseStatusCodePages();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi().AllowAnonymous();
 }
 
 // Before the HTTPS redirect, so CORS preflight requests are answered rather than redirected.
 app.UseCors();
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapHealthChecks("/health");
+app.MapHealthChecks("/health").AllowAnonymous();
+app.MapAuthEndpoints();
 app.MapInvoiceEndpoints();
 app.MapInvoiceReviewEndpoints();
 app.MapExtractionStatsEndpoints();
+app.MapUserEndpoints();
 
 app.Run();
+
+// Lets the integration tests host the app with WebApplicationFactory<Program>.
+public partial class Program;

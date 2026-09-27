@@ -15,6 +15,7 @@ const invoice: Invoice = {
   total: 113.99,
   createdAt: '2026-09-26T22:47:16Z',
   reviewedAt: null,
+  reviewedBy: null,
   modelUsed: 'claude-opus-5',
   lines: [
     { id: 'l1', description: 'Fridge', qty: 1, unitPrice: 94.99, lineTotal: 113.99 },

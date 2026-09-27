@@ -22,6 +22,9 @@ public class Invoice
 
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? ReviewedAt { get; set; }
+
+    /// <summary>Who approved or rejected it (their user name), kept as text so the record outlives the account.</summary>
+    public string? ReviewedBy { get; set; }
     public string? ModelUsed { get; set; }
 
     public List<InvoiceLine> Lines { get; set; } = [];
@@ -55,7 +58,7 @@ public class Invoice
         SetDetails(corrected);
     }
 
-    public void Approve(DateTimeOffset reviewedAt)
+    public void Approve(DateTimeOffset reviewedAt, string reviewedBy)
     {
         EnsureState(CanBeEdited, "approved");
         if (HasBlockingIssues)
@@ -64,14 +67,21 @@ public class Invoice
         }
 
         Status = InvoiceStatus.Approved;
-        ReviewedAt = reviewedAt;
+        SetReviewed(reviewedAt, reviewedBy);
     }
 
-    public void Reject(DateTimeOffset reviewedAt)
+    public void Reject(DateTimeOffset reviewedAt, string reviewedBy)
     {
         EnsureState(CanBeRejected, "rejected");
         Status = InvoiceStatus.Rejected;
+        SetReviewed(reviewedAt, reviewedBy);
+    }
+
+    private void SetReviewed(DateTimeOffset reviewedAt, string reviewedBy)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(reviewedBy);
         ReviewedAt = reviewedAt;
+        ReviewedBy = Cut(reviewedBy, InvoiceFieldLimits.ReviewedBy);
     }
 
     public void ReplaceValidationIssues(IEnumerable<ValidationIssue> issues)

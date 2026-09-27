@@ -7,16 +7,18 @@ namespace InvoiceProcessor.Core.Tests;
 public class InvoiceReviewTests
 {
     private static readonly DateTimeOffset Now = new(2026, 9, 27, 12, 0, 0, TimeSpan.Zero);
+    private const string Reviewer = "reviewer@example.com";
 
     [Fact]
     public void Pending_invoice_can_be_approved()
     {
         var invoice = PendingInvoice();
 
-        invoice.Approve(Now);
+        invoice.Approve(Now, Reviewer);
 
         Assert.Equal(InvoiceStatus.Approved, invoice.Status);
         Assert.Equal(Now, invoice.ReviewedAt);
+        Assert.Equal(Reviewer, invoice.ReviewedBy);
     }
 
     [Fact]
@@ -25,7 +27,7 @@ public class InvoiceReviewTests
         var invoice = PendingInvoice();
         invoice.ReplaceValidationIssues([new ValidationIssue { Field = "total", Rule = ValidationRules.NetPlusVatEqualsTotal, Message = "m" }]);
 
-        invoice.Approve(Now);
+        invoice.Approve(Now, Reviewer);
 
         Assert.Equal(InvoiceStatus.Approved, invoice.Status);
     }
@@ -37,7 +39,7 @@ public class InvoiceReviewTests
         invoice.ReplaceValidationIssues([new ValidationIssue { Field = "supplier", Rule = ValidationRules.RequiredFields, Message = "m" }]);
 
         Assert.True(invoice.HasBlockingIssues);
-        Assert.Throws<InvalidOperationException>(() => invoice.Approve(Now));
+        Assert.Throws<InvalidOperationException>(() => invoice.Approve(Now, Reviewer));
         Assert.Equal(InvoiceStatus.PendingReview, invoice.Status);
     }
 
@@ -53,7 +55,7 @@ public class InvoiceReviewTests
 
         Assert.False(invoice.CanBeEdited);
         Assert.Throws<InvalidOperationException>(() => invoice.ApplyCorrections(Details("X")));
-        Assert.Throws<InvalidOperationException>(() => invoice.Approve(Now));
+        Assert.Throws<InvalidOperationException>(() => invoice.Approve(Now, Reviewer));
     }
 
     [Theory]
@@ -69,13 +71,14 @@ public class InvoiceReviewTests
 
         if (allowed)
         {
-            invoice.Reject(Now);
+            invoice.Reject(Now, Reviewer);
             Assert.Equal(InvoiceStatus.Rejected, invoice.Status);
             Assert.Equal(Now, invoice.ReviewedAt);
+            Assert.Equal(Reviewer, invoice.ReviewedBy);
         }
         else
         {
-            Assert.Throws<InvalidOperationException>(() => invoice.Reject(Now));
+            Assert.Throws<InvalidOperationException>(() => invoice.Reject(Now, Reviewer));
         }
     }
 

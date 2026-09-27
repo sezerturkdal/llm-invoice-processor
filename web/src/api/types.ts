@@ -53,6 +53,8 @@ export interface Invoice {
   total: number | null
   createdAt: string
   reviewedAt: string | null
+  /** Email of the user who approved or rejected it. */
+  reviewedBy: string | null
   modelUsed: string | null
   lines: InvoiceLine[]
   validationIssues: ValidationIssue[]
@@ -111,6 +113,22 @@ export interface InvoiceListFilters {
   supplier?: string
   page: number
   pageSize: number
+}
+
+export type Role = 'Admin' | 'Reviewer'
+
+export const roles: readonly Role[] = ['Reviewer', 'Admin']
+
+export interface CurrentUser {
+  email: string
+  role: Role | null
+}
+
+export interface UserAccount {
+  id: string
+  email: string
+  role: Role | null
+  isActive: boolean
 }
 
 /** RFC 9457 problem details, as returned by the API for errors. */

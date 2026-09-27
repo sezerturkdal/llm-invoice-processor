@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using InvoiceProcessor.Api.Auth;
 using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Core.Invoices;
 using InvoiceProcessor.Infrastructure.Persistence;
@@ -12,7 +14,7 @@ public static class InvoiceReviewEndpoints
 {
     public static IEndpointRouteBuilder MapInvoiceReviewEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/invoices").WithTags("Review");
+        var group = app.MapGroup("/api/invoices").WithTags("Review").RequireAuthorization(Policies.Review);
 
         group.MapPut("/{id:guid}", Update);
         group.MapPost("/{id:guid}/approve", Approve);
@@ -55,6 +57,7 @@ public static class InvoiceReviewEndpoints
 
     private static async Task<Results<Ok<InvoiceResponse>, NotFound, Conflict<ProblemDetails>>> Approve(
         Guid id,
+        ClaimsPrincipal user,
         InvoiceProcessorDbContext db,
         TimeProvider timeProvider,
         CancellationToken cancellationToken)
@@ -76,7 +79,7 @@ public static class InvoiceReviewEndpoints
             return Conflict("Invoice is incomplete", $"Fill in the missing fields before approving: {string.Join(", ", missing)}.");
         }
 
-        invoice.Approve(timeProvider.GetUtcNow());
+        invoice.Approve(timeProvider.GetUtcNow(), ReviewerName(user));
         await db.SaveChangesAsync(cancellationToken);
 
         return TypedResults.Ok(await ToResponseAsync(db, invoice, cancellationToken));
@@ -84,6 +87,7 @@ public static class InvoiceReviewEndpoints
 
     private static async Task<Results<Ok<InvoiceResponse>, NotFound, Conflict<ProblemDetails>>> Reject(
         Guid id,
+        ClaimsPrincipal user,
         InvoiceProcessorDbContext db,
         TimeProvider timeProvider,
         CancellationToken cancellationToken)
@@ -99,7 +103,7 @@ public static class InvoiceReviewEndpoints
             return WrongState(invoice, "rejected");
         }
 
-        invoice.Reject(timeProvider.GetUtcNow());
+        invoice.Reject(timeProvider.GetUtcNow(), ReviewerName(user));
         await db.SaveChangesAsync(cancellationToken);
 
         return TypedResults.Ok(await ToResponseAsync(db, invoice, cancellationToken));
@@ -108,6 +112,10 @@ public static class InvoiceReviewEndpoints
     // The client replaces its cached invoice with this response, so it carries the same extraction usage as GET does.
     private static async Task<InvoiceResponse> ToResponseAsync(InvoiceProcessorDbContext db, Invoice invoice, CancellationToken cancellationToken) =>
         InvoiceResponse.From(invoice, await db.ExtractionLogs.LatestForAsync(invoice.Id, cancellationToken));
+
+    // The user name is the email; the endpoints require a signed-in user, so it is always there.
+    private static string ReviewerName(ClaimsPrincipal user) =>
+        user.Identity?.Name ?? throw new InvalidOperationException("Reviewing requires a signed-in user.");
 
     private static Task<Invoice?> LoadForReviewAsync(InvoiceProcessorDbContext db, Guid id, CancellationToken cancellationToken) =>
         db.Invoices

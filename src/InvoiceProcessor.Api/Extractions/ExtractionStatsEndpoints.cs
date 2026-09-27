@@ -1,3 +1,4 @@
+using InvoiceProcessor.Api.Auth;
 using InvoiceProcessor.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,8 @@ public static class ExtractionStatsEndpoints
 
     public static IEndpointRouteBuilder MapExtractionStatsEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/extractions/stats", GetStats).WithTags("Extractions");
+        // Cost figures are for admins.
+        app.MapGet("/api/extractions/stats", GetStats).WithTags("Extractions").RequireAuthorization(Policies.Admin);
         return app;
     }
 

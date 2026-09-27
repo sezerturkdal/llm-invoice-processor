@@ -8,4 +8,7 @@ public static class InvoiceFieldLimits
     public const int InvoiceNumber = 128;
     public const int Currency = 8;
     public const int LineDescription = 1024;
+
+    /// <summary>A user name (email); Identity allows 256.</summary>
+    public const int ReviewedBy = 256;
 }

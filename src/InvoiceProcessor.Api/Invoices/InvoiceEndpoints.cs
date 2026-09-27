@@ -1,3 +1,4 @@
+using InvoiceProcessor.Api.Auth;
 using InvoiceProcessor.Api.Processing;
 using InvoiceProcessor.Core.Files;
 using InvoiceProcessor.Core.Invoices;
@@ -20,7 +21,7 @@ public static class InvoiceEndpoints
     {
         var uploadOptions = app.ServiceProvider.GetRequiredService<IOptions<UploadOptions>>().Value;
 
-        var group = app.MapGroup("/api/invoices").WithTags("Invoices");
+        var group = app.MapGroup("/api/invoices").WithTags("Invoices").RequireAuthorization(Policies.Review);
 
         // JSON API called from our own frontend, not a cookie-authenticated form, so antiforgery is not needed.
         // Bodies well over the file limit are cut off by Kestrel with 413 before they are buffered.

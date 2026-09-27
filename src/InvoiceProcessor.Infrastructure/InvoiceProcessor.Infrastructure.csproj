@@ -6,13 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Anthropic" Version="12.50.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.12" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Extraction\Prompts\*.md;Extraction\Prompts\*.json"
-                      LogicalName="InvoiceProcessor.Infrastructure.Extraction.Prompts.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="Extraction\Prompts\*.md;Extraction\Prompts\*.json" LogicalName="InvoiceProcessor.Infrastructure.Extraction.Prompts.%(Filename)%(Extension)" />
   </ItemGroup>
 
   <PropertyGroup>
