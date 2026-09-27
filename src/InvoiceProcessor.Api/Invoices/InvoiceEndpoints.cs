@@ -186,8 +186,23 @@ public static class InvoiceEndpoints
             .Include(i => i.ValidationIssues)
             .AsSplitQuery()
             .FirstOrDefaultAsync(i => i.Id == id, cancellationToken);
+        if (invoice is null)
+        {
+            return TypedResults.NotFound();
+        }
 
-        return invoice is null ? TypedResults.NotFound() : TypedResults.Ok(InvoiceResponse.From(invoice));
+        // Tells the reviewer why a failed extraction failed, next to the retry button.
+        string? extractionError = null;
+        if (invoice.Status == InvoiceStatus.Failed)
+        {
+            extractionError = await db.ExtractionLogs
+                .Where(l => l.InvoiceId == id)
+                .OrderByDescending(l => l.CreatedAt)
+                .Select(l => l.Error)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        return TypedResults.Ok(InvoiceResponse.From(invoice, extractionError));
     }
 
     private static async Task<Results<FileStreamHttpResult, NotFound>> GetFile(

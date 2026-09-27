@@ -56,6 +56,20 @@ export interface Invoice {
   modelUsed: string | null
   lines: InvoiceLine[]
   validationIssues: ValidationIssue[]
+  /** Why the last extraction failed; set only for Failed invoices. */
+  extractionError: string | null
+}
+
+/** The reviewer's corrected data; replaces all fields and lines. */
+export interface InvoiceUpdate {
+  supplier: string | null
+  invoiceNumber: string | null
+  date: string | null
+  currency: string | null
+  net: number | null
+  vat: number | null
+  total: number | null
+  lines: { description: string; qty: number; unitPrice: number; lineTotal: number }[]
 }
 
 export interface InvoiceListFilters {

@@ -17,9 +17,11 @@ public sealed record InvoiceResponse(
     DateTimeOffset? ReviewedAt,
     string? ModelUsed,
     IReadOnlyList<InvoiceLineResponse> Lines,
-    IReadOnlyList<ValidationIssueResponse> ValidationIssues)
+    IReadOnlyList<ValidationIssueResponse> ValidationIssues,
+    string? ExtractionError)
 {
-    public static InvoiceResponse From(Invoice invoice) => new(
+    /// <param name="extractionError">Why the last extraction failed; only meaningful for Failed invoices.</param>
+    public static InvoiceResponse From(Invoice invoice, string? extractionError = null) => new(
         invoice.Id,
         invoice.FileName,
         invoice.Status,
@@ -34,7 +36,8 @@ public sealed record InvoiceResponse(
         invoice.ReviewedAt,
         invoice.ModelUsed,
         [.. invoice.Lines.Select(l => new InvoiceLineResponse(l.Id, l.Description, l.Qty, l.UnitPrice, l.LineTotal))],
-        [.. invoice.ValidationIssues.Select(v => new ValidationIssueResponse(v.Field, v.Rule, v.Message))]);
+        [.. invoice.ValidationIssues.Select(v => new ValidationIssueResponse(v.Field, v.Rule, v.Message))],
+        invoice.Status == InvoiceStatus.Failed ? extractionError : null);
 }
 
 public sealed record InvoiceLineResponse(Guid Id, string Description, decimal Qty, decimal UnitPrice, decimal LineTotal);

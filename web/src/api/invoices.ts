@@ -1,6 +1,6 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { request } from './client'
-import type { Invoice, InvoiceListFilters, InvoiceListResponse } from './types'
+import { request, sendJson } from './client'
+import type { Invoice, InvoiceListFilters, InvoiceListResponse, InvoiceUpdate } from './types'
 
 // Extraction runs in the background, so anything still Processing is polled until it settles.
 const processingPollMs = 2000
@@ -54,6 +54,35 @@ export function useUploadInvoice() {
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: invoiceKeys.all }),
   })
+}
+
+/**
+ * Review actions. Each returns the updated invoice, which replaces the cached detail directly
+ * (so validation flags update without a refetch); lists are refetched.
+ */
+export function useReviewActions(id: string) {
+  const queryClient = useQueryClient()
+
+  const onSuccess = (invoice: Invoice) => {
+    queryClient.setQueryData(invoiceKeys.detail(id), invoice)
+    return queryClient.invalidateQueries({ queryKey: invoiceKeys.all, predicate: (q) => q.queryKey[1] !== 'detail' })
+  }
+
+  return {
+    save: useMutation({
+      mutationFn: (update: InvoiceUpdate) => sendJson<Invoice>(`/api/invoices/${id}`, 'PUT', update),
+      onSuccess,
+    }),
+    approve: useMutation({ mutationFn: () => sendJson<Invoice>(`/api/invoices/${id}/approve`, 'POST'), onSuccess }),
+    reject: useMutation({ mutationFn: () => sendJson<Invoice>(`/api/invoices/${id}/reject`, 'POST'), onSuccess }),
+    reextract: useMutation({ mutationFn: () => sendJson<Invoice>(`/api/invoices/${id}/extract`, 'POST'), onSuccess }),
+  }
+}
+
+/** The most recently uploaded other invoice still waiting for review, to move on to after finishing one. */
+export async function findNextPending(currentId: string): Promise<string | undefined> {
+  const list = await request<InvoiceListResponse>('/api/invoices?status=PendingReview&page=1&pageSize=2')
+  return list.items.find((i) => i.id !== currentId)?.id
 }
 
 function toSearchParams(filters: InvoiceListFilters): string {
