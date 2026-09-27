@@ -2,6 +2,7 @@ using InvoiceProcessor.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 
 namespace InvoiceProcessor.Api.Auth;
@@ -66,6 +67,14 @@ public static class AuthSetup
             .SetFallbackPolicy(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build())
             .AddPolicy(Policies.Review, policy => policy.RequireRole(Roles.Reviewer, Roles.Admin))
             .AddPolicy(Policies.Admin, policy => policy.RequireRole(Roles.Admin));
+
+        // The keys that encrypt the session cookie. In a container they would otherwise live in the container's
+        // file system, and recreating it would sign everyone out; docker-compose points this at a volume.
+        var keysPath = configuration["DataProtection:KeysPath"];
+        if (!string.IsNullOrWhiteSpace(keysPath))
+        {
+            services.AddDataProtection().SetApplicationName("InvoiceProcessor").PersistKeysToFileSystem(new DirectoryInfo(keysPath));
+        }
 
         services.AddScoped<IdentitySeeder>();
 

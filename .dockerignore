@@ -1,0 +1,16 @@
+# Keep the build context small and free of local state and secrets.
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/uploads/
+.git/
+.vs/
+.vscode/
+.idea/
+.claude/
+.env
+CLAUDE.md
+CLAUDE.local.md
+evals/
+tests/

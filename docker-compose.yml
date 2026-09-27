@@ -1,3 +1,5 @@
+# The whole app: docker compose up --build, then open http://localhost:8080.
+# For local development, start only the database (docker compose up -d sqlserver) and run the API and Vite yourself.
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -17,5 +19,38 @@ services:
       retries: 10
       start_period: 20s
 
+  api:
+    build:
+      context: .
+      dockerfile: src/InvoiceProcessor.Api/Dockerfile
+    container_name: invoiceprocessor-api
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__InvoiceProcessor: "Server=sqlserver,1433;Database=InvoiceProcessor;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True"
+      Database__MigrateOnStartup: "true"
+      FileStorage__RootPath: /app/uploads
+      DataProtection__KeysPath: /app/keys
+      Llm__Model: ${LLM_MODEL:-claude-opus-5}
+      Llm__ApiKey: ${ANTHROPIC_API_KEY:-}
+      Auth__Admin__Email: ${ADMIN_EMAIL:?Set ADMIN_EMAIL in .env (the first admin account)}
+      Auth__Admin__Password: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env (at least 10 characters)}
+    volumes:
+      - uploads:/app/uploads
+      - keys:/app/keys
+    restart: unless-stopped
+
+  web:
+    build: ./web
+    container_name: invoiceprocessor-web
+    depends_on:
+      - api
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    restart: unless-stopped
+
 volumes:
   sqlserver-data:
+  uploads:
+  keys:
