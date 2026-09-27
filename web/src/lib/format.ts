@@ -25,6 +25,26 @@ export function formatDate(isoDate: string | null): string {
   )
 }
 
+/** Estimated API cost in USD; cents alone would hide what a single extraction costs. */
+export function formatUsd(amount: number | null): string {
+  if (amount === null) return '—'
+  const digits = amount !== 0 && Math.abs(amount) < 1 ? 4 : 2
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'narrowSymbol', minimumFractionDigits: digits, maximumFractionDigits: digits }).format(amount)
+}
+
+/** "850 ms", "7.4 s". */
+export function formatDuration(ms: number | null): string {
+  if (ms === null) return '—'
+  if (ms < 1000) return `${Math.round(ms)} ms`
+  return `${(ms / 1000).toFixed(1)} s`
+}
+
+/** "5,523", or "1.2M" once counts get large. */
+export function formatCount(value: number | null): string {
+  if (value === null) return '—'
+  return new Intl.NumberFormat(locale, value >= 1_000_000 ? { notation: 'compact', maximumFractionDigits: 1 } : {}).format(value)
+}
+
 const relative = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' })
 
 /** "2 minutes ago", "yesterday"; falls back to a date after a week. */

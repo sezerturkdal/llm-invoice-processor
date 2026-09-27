@@ -6,6 +6,7 @@ import { Layout } from './components/Layout'
 import './index.css'
 import { InvoiceDetailPage } from './pages/InvoiceDetailPage'
 import { InvoiceListPage } from './pages/InvoiceListPage'
+import { UsagePage } from './pages/UsagePage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <InvoiceListPage /> },
       { path: '/invoices/:id', element: <InvoiceDetailPage /> },
+      { path: '/usage', element: <UsagePage /> },
     ],
   },
 ])

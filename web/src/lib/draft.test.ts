@@ -22,6 +22,7 @@ const invoice: Invoice = {
   ],
   validationIssues: [],
   extractionError: null,
+  lastExtraction: null,
 }
 
 describe('parseAmount', () => {

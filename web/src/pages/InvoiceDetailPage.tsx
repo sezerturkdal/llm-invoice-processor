@@ -2,13 +2,13 @@ import { useCallback, useEffect, useRef, useState, type ReactNode, type RefObjec
 import { Link, useBlocker, useNavigate, useParams } from 'react-router'
 import { ApiError } from '../api/client'
 import { findNextPending, useInvoice, useReviewActions } from '../api/invoices'
-import type { Invoice, ValidationIssue } from '../api/types'
+import type { ExtractionUsage, Invoice, ValidationIssue } from '../api/types'
 import { DocumentViewer } from '../components/review/DocumentViewer'
 import { FieldInput } from '../components/review/FieldInput'
 import { LinesEditor } from '../components/review/LinesEditor'
 import { StatusBadge } from '../components/StatusBadge'
 import { draftFromInvoice, draftToUpdate, isDirty, type DraftErrors, type InvoiceDraft } from '../lib/draft'
-import { formatRelative } from '../lib/format'
+import { formatCount, formatDuration, formatRelative, formatUsd } from '../lib/format'
 
 /** The review screen: the document on the left, the extracted data on the right. */
 export function InvoiceDetailPage() {
@@ -54,6 +54,7 @@ function ReviewPanel({ invoice }: { invoice: Invoice }) {
         {invoice.modelUsed && <> · extracted by {invoice.modelUsed}</>}
         {invoice.reviewedAt && <> · reviewed {formatRelative(invoice.reviewedAt)}</>}
       </p>
+      {invoice.lastExtraction?.succeeded && invoice.status !== 'Processing' && <UsageLine usage={invoice.lastExtraction} />}
     </div>
   )
 
@@ -83,6 +84,21 @@ function ReviewPanel({ invoice }: { invoice: Invoice }) {
       {header}
       <ReviewForm invoice={invoice} />
     </>
+  )
+}
+
+function UsageLine({ usage }: { usage: ExtractionUsage }) {
+  return (
+    <p className="tabular mt-0.5 text-xs text-slate-500">
+      {formatDuration(usage.latencyMs)}
+      {usage.inputTokens !== null && usage.outputTokens !== null && (
+        <>
+          {' '}
+          · {formatCount(usage.inputTokens)} in / {formatCount(usage.outputTokens)} out tokens
+        </>
+      )}
+      {usage.costEstimate !== null && <> · ~{formatUsd(usage.costEstimate)}</>}
+    </p>
   )
 }
 

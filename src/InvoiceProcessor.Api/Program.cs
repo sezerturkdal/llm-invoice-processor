@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using InvoiceProcessor.Api.Extractions;
 using InvoiceProcessor.Api.Invoices;
 using InvoiceProcessor.Api.Processing;
 using InvoiceProcessor.Api.Validation;
@@ -56,5 +57,6 @@ app.UseHttpsRedirection();
 app.MapHealthChecks("/health");
 app.MapInvoiceEndpoints();
 app.MapInvoiceReviewEndpoints();
+app.MapExtractionStatsEndpoints();
 
 app.Run();

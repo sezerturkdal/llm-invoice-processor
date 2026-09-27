@@ -50,7 +50,7 @@ public static class InvoiceReviewEndpoints
         await validation.ValidateAsync(invoice, cancellationToken);
         await db.SaveChangesAsync(cancellationToken);
 
-        return TypedResults.Ok(InvoiceResponse.From(invoice));
+        return TypedResults.Ok(await ToResponseAsync(db, invoice, cancellationToken));
     }
 
     private static async Task<Results<Ok<InvoiceResponse>, NotFound, Conflict<ProblemDetails>>> Approve(
@@ -79,7 +79,7 @@ public static class InvoiceReviewEndpoints
         invoice.Approve(timeProvider.GetUtcNow());
         await db.SaveChangesAsync(cancellationToken);
 
-        return TypedResults.Ok(InvoiceResponse.From(invoice));
+        return TypedResults.Ok(await ToResponseAsync(db, invoice, cancellationToken));
     }
 
     private static async Task<Results<Ok<InvoiceResponse>, NotFound, Conflict<ProblemDetails>>> Reject(
@@ -102,8 +102,12 @@ public static class InvoiceReviewEndpoints
         invoice.Reject(timeProvider.GetUtcNow());
         await db.SaveChangesAsync(cancellationToken);
 
-        return TypedResults.Ok(InvoiceResponse.From(invoice));
+        return TypedResults.Ok(await ToResponseAsync(db, invoice, cancellationToken));
     }
+
+    // The client replaces its cached invoice with this response, so it carries the same extraction usage as GET does.
+    private static async Task<InvoiceResponse> ToResponseAsync(InvoiceProcessorDbContext db, Invoice invoice, CancellationToken cancellationToken) =>
+        InvoiceResponse.From(invoice, await db.ExtractionLogs.LatestForAsync(invoice.Id, cancellationToken));
 
     private static Task<Invoice?> LoadForReviewAsync(InvoiceProcessorDbContext db, Guid id, CancellationToken cancellationToken) =>
         db.Invoices

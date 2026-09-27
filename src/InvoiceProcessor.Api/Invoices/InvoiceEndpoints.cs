@@ -191,18 +191,10 @@ public static class InvoiceEndpoints
             return TypedResults.NotFound();
         }
 
-        // Tells the reviewer why a failed extraction failed, next to the retry button.
-        string? extractionError = null;
-        if (invoice.Status == InvoiceStatus.Failed)
-        {
-            extractionError = await db.ExtractionLogs
-                .Where(l => l.InvoiceId == id)
-                .OrderByDescending(l => l.CreatedAt)
-                .Select(l => l.Error)
-                .FirstOrDefaultAsync(cancellationToken);
-        }
+        // Usage for the reviewer, and for a failed invoice the reason it failed, next to the retry button.
+        var lastExtraction = await db.ExtractionLogs.LatestForAsync(id, cancellationToken);
 
-        return TypedResults.Ok(InvoiceResponse.From(invoice, extractionError));
+        return TypedResults.Ok(InvoiceResponse.From(invoice, lastExtraction));
     }
 
     private static async Task<Results<FileStreamHttpResult, NotFound>> GetFile(

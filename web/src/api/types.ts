@@ -58,6 +58,40 @@ export interface Invoice {
   validationIssues: ValidationIssue[]
   /** Why the last extraction failed; set only for Failed invoices. */
   extractionError: string | null
+  lastExtraction: ExtractionUsage | null
+}
+
+/** What one extraction attempt used. Cost is an estimate in USD. */
+export interface ExtractionUsage {
+  provider: string
+  model: string
+  inputTokens: number | null
+  outputTokens: number | null
+  latencyMs: number
+  costEstimate: number | null
+  succeeded: boolean
+  createdAt: string
+}
+
+export interface ExtractionStats {
+  /** All attempts, including failures and re-extractions. */
+  extractions: number
+  failures: number
+  inputTokens: number
+  outputTokens: number
+  totalCost: number
+  /** Per successful extraction. */
+  averageCost: number | null
+  /** Over successful extractions. */
+  averageLatencyMs: number | null
+  maxLatencyMs: number | null
+}
+
+export interface ExtractionStatsResponse {
+  /** Start of the period; null for all time. */
+  since: string | null
+  totals: ExtractionStats
+  models: { provider: string; model: string; stats: ExtractionStats }[]
 }
 
 /** The reviewer's corrected data; replaces all fields and lines. */
