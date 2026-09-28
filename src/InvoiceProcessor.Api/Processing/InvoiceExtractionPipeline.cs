@@ -2,6 +2,7 @@ using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Core.Extraction;
 using InvoiceProcessor.Core.Files;
 using InvoiceProcessor.Core.Invoices;
+using InvoiceProcessor.Infrastructure.Extraction;
 using InvoiceProcessor.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ namespace InvoiceProcessor.Api.Processing;
 public sealed class InvoiceExtractionPipeline(
     InvoiceProcessorDbContext db,
     IFileStorage storage,
-    IInvoiceExtractor extractor,
+    ExtractionModelSelector modelSelector,
     InvoiceValidationService validation,
     TimeProvider timeProvider,
     ILogger<InvoiceExtractionPipeline> logger)
@@ -43,13 +44,16 @@ public sealed class InvoiceExtractionPipeline(
             content = buffer.ToArray();
         }
 
+        // Chosen per invoice, so a model picked in Settings applies from the next extraction on.
+        var extractor = await modelSelector.GetExtractorAsync(cancellationToken);
+
         try
         {
             var result = await extractor.ExtractAsync(new InvoiceDocument(content, fileType), cancellationToken);
 
             invoice.ApplyExtraction(result.Invoice, result.Usage.Model);
             await validation.ValidateAsync(invoice, cancellationToken);
-            AddLog(invoice, result.Usage, error: null);
+            AddLog(invoice, extractor, result.Usage, error: null);
 
             logger.LogInformation(
                 "Extracted invoice {InvoiceId} with {Model}: {InputTokens} in / {OutputTokens} out tokens, {LatencyMs} ms, ${Cost}, {IssueCount} validation issues",
@@ -63,13 +67,13 @@ public sealed class InvoiceExtractionPipeline(
 
             invoice.Status = InvoiceStatus.Failed;
             var usage = (ex as InvoiceExtractionException)?.Usage;
-            AddLog(invoice, usage, Truncate(ex.Message, MaxErrorLength));
+            AddLog(invoice, extractor, usage, Truncate(ex.Message, MaxErrorLength));
         }
 
         await db.SaveChangesAsync(CancellationToken.None);
     }
 
-    private void AddLog(Invoice invoice, ExtractionUsage? usage, string? error)
+    private void AddLog(Invoice invoice, IInvoiceExtractor extractor, ExtractionUsage? usage, string? error)
     {
         db.ExtractionLogs.Add(new ExtractionLog
         {

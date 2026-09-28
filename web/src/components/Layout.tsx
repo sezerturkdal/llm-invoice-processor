@@ -24,6 +24,7 @@ export function Layout() {
             </NavItem>
             {isAdmin && <NavItem to="/usage">Usage</NavItem>}
             {isAdmin && <NavItem to="/users">Users</NavItem>}
+            {isAdmin && <NavItem to="/settings">Settings</NavItem>}
           </nav>
 
           {user && (

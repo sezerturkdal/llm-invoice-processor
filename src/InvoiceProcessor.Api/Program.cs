@@ -3,6 +3,7 @@ using InvoiceProcessor.Api.Auth;
 using InvoiceProcessor.Api.Extractions;
 using InvoiceProcessor.Api.Invoices;
 using InvoiceProcessor.Api.Processing;
+using InvoiceProcessor.Api.Settings;
 using InvoiceProcessor.Api.Users;
 using InvoiceProcessor.Api.Validation;
 using InvoiceProcessor.Infrastructure;
@@ -68,6 +69,7 @@ app.MapInvoiceEndpoints();
 app.MapInvoiceReviewEndpoints();
 app.MapExtractionStatsEndpoints();
 app.MapUserEndpoints();
+app.MapExtractionSettingsEndpoints();
 
 app.Run();
 

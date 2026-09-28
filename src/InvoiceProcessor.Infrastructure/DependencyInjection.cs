@@ -1,4 +1,3 @@
-using Anthropic;
 using InvoiceProcessor.Core.Extraction;
 using InvoiceProcessor.Core.Files;
 using InvoiceProcessor.Infrastructure.Extraction;
@@ -29,30 +28,36 @@ public static class DependencyInjection
         services.AddSingleton<IFileStorage>(sp => new LocalFileStorage(storageRoot, sp.GetRequiredService<TimeProvider>()));
 
         services.AddInvoiceExtractor(configuration);
+        services.AddSingleton<ExtractionModelCatalog>();
+        services.AddScoped<ExtractionModelSelector>();
 
         return services;
     }
 
     /// <summary>
-    /// Registers the <see cref="IInvoiceExtractor"/> for <c>Llm:Provider</c>. Public so the eval runner
-    /// builds exactly what the API runs. Adding a provider means a new IInvoiceExtractor and a case here.
+    /// Registers the <see cref="InvoiceExtractorFactory"/> and, as <see cref="IInvoiceExtractor"/>, the extractor
+    /// for <c>Llm:Provider</c> and <c>Llm:Model</c>. Public so the eval runner builds exactly what the API runs.
+    /// Adding a provider means a new IInvoiceExtractor and a case in the factory.
     /// </summary>
     public static IServiceCollection AddInvoiceExtractor(this IServiceCollection services, IConfiguration configuration)
     {
         var llmOptions = configuration.GetSection(LlmOptions.SectionName).Get<LlmOptions>() ?? new LlmOptions();
 
-        switch (llmOptions.Provider)
+        if (!InvoiceExtractorFactory.Providers.Contains(llmOptions.Provider))
         {
-            case AnthropicInvoiceExtractor.ProviderName:
-                // Falls back to the ANTHROPIC_API_KEY environment variable when Llm:ApiKey is not set.
-                var client = string.IsNullOrWhiteSpace(llmOptions.ApiKey) ? new AnthropicClient() : new AnthropicClient { ApiKey = llmOptions.ApiKey };
-                services.AddSingleton<IInvoiceExtractor>(new AnthropicInvoiceExtractor(client, llmOptions));
-                break;
-
-            default:
-                throw new InvalidOperationException(
-                    $"Unknown Llm:Provider '{llmOptions.Provider}'. Supported: {AnthropicInvoiceExtractor.ProviderName}.");
+            throw new InvalidOperationException(
+                $"Unknown Llm:Provider '{llmOptions.Provider}'. Supported: {string.Join(", ", InvoiceExtractorFactory.Providers)}.");
         }
+
+        if (!llmOptions.IsAllowed(llmOptions.Provider))
+        {
+            throw new InvalidOperationException(
+                $"Llm:Provider '{llmOptions.Provider}' is not in Llm:AllowedProviders ({string.Join(", ", llmOptions.AllowedProviders!)}).");
+        }
+
+        var factory = new InvoiceExtractorFactory(llmOptions);
+        services.AddSingleton(factory);
+        services.AddSingleton(factory.Create(llmOptions.Provider, llmOptions.Model));
 
         return services;
     }

@@ -14,6 +14,7 @@ public class AuthorizationTests(ApiFactory api)
     [InlineData("/api/invoices/suppliers")]
     [InlineData("/api/extractions/stats")]
     [InlineData("/api/users")]
+    [InlineData("/api/settings/extraction")]
     [InlineData("/api/auth/me")]
     public async Task Anonymous_requests_are_rejected(string path)
     {
@@ -34,6 +35,7 @@ public class AuthorizationTests(ApiFactory api)
     [InlineData("/api/invoices", HttpStatusCode.OK)]
     [InlineData("/api/extractions/stats", HttpStatusCode.Forbidden)]
     [InlineData("/api/users", HttpStatusCode.Forbidden)]
+    [InlineData("/api/settings/extraction", HttpStatusCode.Forbidden)]
     public async Task Reviewer_can_review_but_not_see_costs_or_users(string path, HttpStatusCode expected)
     {
         var client = await api.SignedInClientAsync(ApiFactory.ReviewerEmail);
@@ -47,6 +49,7 @@ public class AuthorizationTests(ApiFactory api)
     [InlineData("/api/invoices")]
     [InlineData("/api/extractions/stats")]
     [InlineData("/api/users")]
+    [InlineData("/api/settings/extraction")]
     public async Task Admin_can_reach_everything(string path)
     {
         var client = await api.SignedInClientAsync(ApiFactory.AdminEmail);

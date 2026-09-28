@@ -131,6 +131,48 @@ export interface UserAccount {
   isActive: boolean
 }
 
+/** A model an admin can pick for extraction (src/InvoiceProcessor.Api/Settings). */
+export interface ModelChoice {
+  id: string
+  /** False for text-only models, which can read only PDFs with a text layer. */
+  supportsImages: boolean
+  /** Parameter count for local models, e.g. "8.8B". */
+  size: string | null
+  /** USD per million tokens; null for local models. */
+  inputPerMillion: number | null
+  outputPerMillion: number | null
+}
+
+export interface ProviderChoice {
+  provider: string
+  /** False when the server configuration (Llm:AllowedProviders) rules it out. */
+  allowed: boolean
+  isSelectable: boolean
+  /** Why it cannot be picked right now, e.g. Ollama is not running. */
+  unavailable: string | null
+  models: ModelChoice[]
+}
+
+export interface ModelChange {
+  provider: string
+  model: string
+  changedBy: string
+  changedAt: string
+}
+
+export interface ExtractionSettings {
+  selected: {
+    provider: string
+    model: string
+    /** True when the server's configured default applies. */
+    isDefault: boolean
+    changedBy: string | null
+    changedAt: string | null
+  }
+  providers: ProviderChoice[]
+  history: ModelChange[]
+}
+
 /** RFC 9457 problem details, as returned by the API for errors. */
 export interface ProblemDetails {
   title?: string

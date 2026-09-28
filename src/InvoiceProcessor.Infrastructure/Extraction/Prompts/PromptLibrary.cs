@@ -9,6 +9,9 @@ public static class PromptLibrary
 
     public static string InvoiceExtractionSchema { get; } = Load("invoice-extraction.schema.json");
 
+    /// <summary>User message for a PDF sent as its text layer; <c>{{text}}</c> is replaced with that text.</summary>
+    public static string InvoiceTextInput { get; } = Load("invoice-extraction.text-input.md");
+
     private static string Load(string fileName)
     {
         var assembly = typeof(PromptLibrary).Assembly;

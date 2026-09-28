@@ -1,3 +1,4 @@
+using InvoiceProcessor.Core.Extraction;
 using InvoiceProcessor.Core.Invoices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -13,6 +14,7 @@ public class InvoiceProcessorDbContext(DbContextOptions<InvoiceProcessorDbContex
     public DbSet<InvoiceLine> InvoiceLines => Set<InvoiceLine>();
     public DbSet<ValidationIssue> ValidationIssues => Set<ValidationIssue>();
     public DbSet<ExtractionLog> ExtractionLogs => Set<ExtractionLog>();
+    public DbSet<ExtractionModelChange> ExtractionModelChanges => Set<ExtractionModelChange>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -32,8 +32,10 @@ services:
       Database__MigrateOnStartup: "true"
       FileStorage__RootPath: /app/uploads
       DataProtection__KeysPath: /app/keys
+      Llm__Provider: ${LLM_PROVIDER:-Anthropic}
       Llm__Model: ${LLM_MODEL:-claude-opus-5}
       Llm__ApiKey: ${ANTHROPIC_API_KEY:-}
+      Llm__Ollama__Endpoint: ${OLLAMA_ENDPOINT:-http://ollama:11434}
       Auth__Admin__Email: ${ADMIN_EMAIL:?Set ADMIN_EMAIL in .env (the first admin account)}
       Auth__Admin__Password: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env (at least 10 characters)}
     volumes:
@@ -50,7 +52,27 @@ services:
       - "${WEB_PORT:-8080}:80"
     restart: unless-stopped
 
+  # Local model, only with: docker compose --profile local up --build
+  # Pull the model once: docker compose exec ollama ollama pull qwen3-vl:8b
+  # Already running Ollama on the host? Skip this and set OLLAMA_ENDPOINT=http://host.docker.internal:11434.
+  ollama:
+    image: ollama/ollama:latest
+    container_name: invoiceprocessor-ollama
+    profiles: ["local"]
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: unless-stopped
+    # With an NVIDIA GPU (and the NVIDIA container toolkit), uncomment to run the model on it:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
 volumes:
   sqlserver-data:
   uploads:
   keys:
+  ollama-models:

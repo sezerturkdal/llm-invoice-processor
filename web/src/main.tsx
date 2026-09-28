@@ -10,6 +10,7 @@ import './index.css'
 import { InvoiceDetailPage } from './pages/InvoiceDetailPage'
 import { InvoiceListPage } from './pages/InvoiceListPage'
 import { LoginPage } from './pages/LoginPage'
+import { SettingsPage } from './pages/SettingsPage'
 import { UsagePage } from './pages/UsagePage'
 import { UsersPage } from './pages/UsersPage'
 
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
         children: [
           { path: '/usage', element: <UsagePage /> },
           { path: '/users', element: <UsersPage /> },
+          { path: '/settings', element: <SettingsPage /> },
         ],
       },
     ],

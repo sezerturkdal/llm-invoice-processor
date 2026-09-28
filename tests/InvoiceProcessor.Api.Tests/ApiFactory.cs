@@ -48,6 +48,8 @@ public sealed class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
         builder.UseSetting("Database:MigrateOnStartup", "true");
         builder.UseSetting("FileStorage:RootPath", _uploads);
         builder.UseSetting("Llm:ApiKey", "not-used-no-extraction-runs-in-these-tests");
+        // Nothing listens here, so the tests see "Ollama is not running" whatever runs on the machine.
+        builder.UseSetting("Llm:Ollama:Endpoint", "http://127.0.0.1:1");
         builder.UseSetting("Auth:DemoUsers:0:Email", AdminEmail);
         builder.UseSetting("Auth:DemoUsers:0:Password", Password);
         builder.UseSetting("Auth:DemoUsers:0:Role", "Admin");

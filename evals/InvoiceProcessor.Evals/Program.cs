@@ -10,8 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 //
 //   generate                 render the synthetic samples (needs Edge or Chrome) and their expected JSON
 //   run [--model <id>]       extract every sample, score it against evals/expected, save the run
+//       [--provider <name>]  Anthropic or Ollama (default: Llm:Provider from the API's appsettings)
 //       [--samples <prefix>] only samples whose name starts with the prefix (default: synthetic-)
-//       [--parallel <n>]     concurrent extractions (default 3)
+//       [--parallel <n>]     concurrent extractions (default 3, 1 for Ollama)
 //   report                   print the markdown comparison of the latest run per model
 
 var paths = EvalPaths.Find();
@@ -42,16 +43,21 @@ async Task<int> RunAsync()
     }
 
     // Same configuration the API uses: its appsettings (model, pricing), then user-secrets and
-    // environment variables (API key). --model overrides the configured model.
+    // environment variables (API key). --provider and --model override the configured ones.
+    var overrides = new Dictionary<string, string?>();
+    if (Option("--provider") is { } provider) overrides["Llm:Provider"] = provider;
+    if (Option("--model") is { } model) overrides["Llm:Model"] = model;
+
     var configuration = new ConfigurationBuilder()
         .AddJsonFile(paths.ApiSettings, optional: false)
         .AddUserSecrets(typeof(EvalPaths).Assembly)
         .AddEnvironmentVariables()
-        .AddInMemoryCollection(Option("--model") is { } model ? [new("Llm:Model", model)] : [])
+        .AddInMemoryCollection(overrides)
         .Build();
 
     var extractor = new ServiceCollection().AddInvoiceExtractor(configuration).BuildServiceProvider().GetRequiredService<IInvoiceExtractor>();
-    var parallelism = int.TryParse(Option("--parallel"), out var n) && n > 0 ? n : 3;
+    // A local model answers one request at a time; parallel requests would only queue and inflate the latency.
+    var parallelism = int.TryParse(Option("--parallel"), out var n) && n > 0 ? n : extractor.Provider == "Ollama" ? 1 : 3;
 
     Console.WriteLine($"Running {samples.Count} samples with {extractor.Provider} {extractor.Model}…");
     var run = await new EvalRunner(extractor, paths, parallelism).RunAsync(samples, CancellationToken.None);
@@ -87,7 +93,7 @@ string? Option(string name)
 
 int Help()
 {
-    Console.WriteLine("Usage: dotnet run --project evals/InvoiceProcessor.Evals -- <generate [--html] | run [--model <id>] [--samples <prefix>] [--parallel <n>] | report>");
+    Console.WriteLine("Usage: dotnet run --project evals/InvoiceProcessor.Evals -- <generate [--html] | run [--provider <name>] [--model <id>] [--samples <prefix>] [--parallel <n>] | report>");
     return command == "help" ? 0 : 1;
 }
 
