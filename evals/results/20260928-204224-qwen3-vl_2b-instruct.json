@@ -1,0 +1,5219 @@
+{
+  "provider": "Ollama",
+  "model": "qwen3-vl:2b-instruct",
+  "promptVersion": "58a792aa",
+  "startedAt": "2026-09-28T20:42:24.6783567+00:00",
+  "samples": [
+    {
+      "sample": "synthetic-01-de-office-supplies",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Nordlicht B\u00FCrobedarf GmbH",
+          "actual": "Nordlicht B\u00FCrobedarf GmbH",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "RE-2026-00418",
+          "actual": "RE-2026-00418",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-03-12",
+          "actual": "2026-03-12",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "298.45",
+          "actual": "298.45",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "56.71",
+          "actual": "56.71",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "355.16",
+          "actual": "355.16",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Kopierpapier A4, 80 g/m\u00B2, 500 Blatt",
+          "actual": "Kopierpapier A4, 80 g/m\u00B2, 500 Blatt",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "10.00",
+          "actual": "1.00",
+          "correct": false,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "4.95",
+          "actual": "4.95",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "49.50",
+          "actual": "49.50",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Toner HP 26A schwarz",
+          "actual": "Toner HP 26A schwarz",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "89.90",
+          "actual": "89.90",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "179.80",
+          "actual": "179.80",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Ordner breit, blau",
+          "actual": "Ordner breit, blau",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "25.00",
+          "actual": "25.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "2.49",
+          "actual": "2.49",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "62.25",
+          "actual": "62.25",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.description",
+          "expected": "Lieferpauschale",
+          "actual": "Lieferpauschale",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "6.90",
+          "actual": "6.90",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "6.90",
+          "actual": "6.90",
+          "correct": true,
+          "line": 3
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [
+        "LineAmountsMatch"
+      ],
+      "inputTokens": 798,
+      "outputTokens": 305,
+      "latencyMs": 33375,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-02-uk-print-shop",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Harbourside Print Co. Ltd",
+          "actual": "Harbourside Print Co. Ltd",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "HPC-7731",
+          "actual": "HPC-7731",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-02-04",
+          "actual": "2026-02-04",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "GBP",
+          "actual": "GBP",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "271.50",
+          "actual": "271.50",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "54.30",
+          "actual": "54.30",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "325.80",
+          "actual": "325.80",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Business cards, 400gsm matt, 500 pcs",
+          "actual": "Business cards, 400gsm matt, 500 pcs",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "500.00",
+          "correct": false,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "38.00",
+          "actual": "38.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "114.00",
+          "actual": "114.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "A1 foam board poster",
+          "actual": "A1 foam board poster",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "4.00",
+          "actual": "4.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "22.50",
+          "actual": "22.50",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "90.00",
+          "actual": "90.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Design proof revision (hours)",
+          "actual": "Design proof revision (hours)",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.50",
+          "actual": "1.50",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "45.00",
+          "actual": "45.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "67.50",
+          "actual": "67.50",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [
+        "LineAmountsMatch"
+      ],
+      "inputTokens": 707,
+      "outputTokens": 247,
+      "latencyMs": 13928,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-03-us-software-no-tax",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Pinecrest Software LLC",
+          "actual": "Pinecrest Software LLC",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "INV-10077",
+          "actual": "INV-10077",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-03-05",
+          "actual": "2026-03-05",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "USD",
+          "actual": "USD",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "3150.00",
+          "actual": "3150.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "0.00",
+          "actual": "0.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "3150.00",
+          "actual": "3150.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Annual license: Analytics Pro (per seat)",
+          "actual": "Annual license: Analytics Pro (per seat)",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": "5.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "480.00",
+          "actual": "480.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "2400.00",
+          "actual": "2400.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Onboarding workshop (remote, half day)",
+          "actual": "Onboarding workshop (remote, half day)",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "750.00",
+          "actual": "750.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "750.00",
+          "actual": "750.00",
+          "correct": true,
+          "line": 1
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [],
+      "inputTokens": 678,
+      "outputTokens": 197,
+      "latencyMs": 11136,
+      "cost": 0,
+      "error": null,
+      "allCorrect": true,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": false,
+      "misreadFlagged": false
+    },
+    {
+      "sample": "synthetic-04-tr-office-supplies",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Anadolu Ofis Malzemeleri A.\u015E.",
+          "actual": "Anadolu Ofis Malzemeleri A.\u015E.",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "ANO2026000153",
+          "actual": "ANO2026000153",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-04-21",
+          "actual": "2026-04-21",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "TRY",
+          "actual": "TRY",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "23087.50",
+          "actual": "23087.50",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "4617.50",
+          "actual": "4617.50",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "27705.00",
+          "actual": "27705.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "4",
+          "correct": false,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "A4 Fotokopi Ka\u011F\u0131d\u0131 (5\u0027li koli)",
+          "actual": "A4 Fotokopi Ka\u011F\u0131d\u0131 (5\u0027li koli)",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "12.00",
+          "actual": "12.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "1149.00",
+          "actual": "1149.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "13788.00",
+          "actual": "13788.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Lazer Yaz\u0131c\u0131 Toneri",
+          "actual": "Lazer Yaz\u0131c\u0131 Toneri",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "3.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "2450.00",
+          "actual": "2450.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "7350.00",
+          "actual": "7350.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Masa D\u00FCzenleyici Set",
+          "actual": "Masa D\u00FCzenleyici Set",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": "5.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "389.90",
+          "actual": "389.90",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "1949.50",
+          "actual": "1949.50",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [
+        "LinesSumToNetOrTotal"
+      ],
+      "inputTokens": 782,
+      "outputTokens": 325,
+      "latencyMs": 18326,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-05-gross-line-totals",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Cloverfield Electronics Ltd",
+          "actual": "Cloverfield Electronics Ltd",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "CFE-26-01188",
+          "actual": "CFE-26-01188",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-05-14",
+          "actual": "2026-05-14",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "613.00",
+          "actual": "613.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "140.99",
+          "actual": "140.99",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "753.99",
+          "actual": "753.99",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "USB-C docking station, 11-in-1",
+          "actual": "USB-C docking station, 11-in-1",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "149.00",
+          "actual": "149.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "366.54",
+          "actual": "366.54",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "27\u0022 QHD monitor, height adjustable",
+          "actual": "27\u0022 QHD monitor, height adjustable",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "279.00",
+          "actual": "279.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "343.17",
+          "actual": "343.17",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "HDMI 2.1 cable, 2 m",
+          "actual": "HDMI 2.1 cable, 2 m",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "3.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "12.00",
+          "actual": "12.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "44.28",
+          "actual": "44.28",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [],
+      "inputTokens": 717,
+      "outputTokens": 256,
+      "latencyMs": 13968,
+      "cost": 0,
+      "error": null,
+      "allCorrect": true,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": false,
+      "misreadFlagged": false
+    },
+    {
+      "sample": "synthetic-06-discount-line",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Brightwave Studio B.V.",
+          "actual": "Brightwave Studio B.V.",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "2026-0147",
+          "actual": "2026-0147",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-06-02",
+          "actual": "2026-06-02",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "1296.00",
+          "actual": "1296.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "272.16",
+          "actual": "272.16",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "1568.16",
+          "actual": "1568.16",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Website maintenance, Q2 2026",
+          "actual": "Website maintenance, Q2 2026",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "1200.00",
+          "actual": "1200.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "1200.00",
+          "actual": "1200.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Hosting and SSL, 12 months",
+          "actual": "Hosting and SSL, 12 months",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "240.00",
+          "actual": "240.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "240.00",
+          "actual": "240.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Loyalty discount 10%",
+          "actual": "Loyalty discount 10%",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "-144.00",
+          "actual": "-144.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "-144.00",
+          "actual": "-144.00",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [],
+      "inputTokens": 691,
+      "outputTokens": 252,
+      "latencyMs": 20607,
+      "cost": 0,
+      "error": null,
+      "allCorrect": true,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": false,
+      "misreadFlagged": false
+    },
+    {
+      "sample": "synthetic-07-two-vat-rates",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Caf\u00E9 Morgenrot KG",
+          "actual": "Caf\u00E9 Morgenrot KG",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "MR-5519",
+          "actual": "Rechnung MR-5519",
+          "correct": false,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-05-29",
+          "actual": "2026-05-29",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "545.60",
+          "actual": "545.60",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "55.18",
+          "actual": "28.28",
+          "correct": false,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "600.78",
+          "actual": "600.78",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Fr\u00FChst\u00FCcksbuffet, pro Person",
+          "actual": "Fr\u00FChst\u00FCcksbuffet, pro Person",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "24.00",
+          "actual": "24.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "14.50",
+          "actual": "14.50",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "348.00",
+          "actual": "348.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Obstplatte, gro\u00DF",
+          "actual": "Obstplatte, gro\u00DF",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "28.00",
+          "actual": "28.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "56.00",
+          "actual": "56.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Kaffee \u0026 Tee Flatrate, pro Person",
+          "actual": "Kaffee \u0026 Tee Flatrate, pro Person",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "24.00",
+          "actual": "24.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "3.80",
+          "actual": "3.80",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "91.20",
+          "actual": "91.20",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.description",
+          "expected": "Orangensaft, 1 l",
+          "actual": "Orangensaft, 1 l",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.qty",
+          "expected": "12.00",
+          "actual": "12.00",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "4.20",
+          "actual": "4.20",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "50.40",
+          "actual": "50.40",
+          "correct": true,
+          "line": 3
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [
+        "NetPlusVatEqualsTotal"
+      ],
+      "inputTokens": 763,
+      "outputTokens": 297,
+      "latencyMs": 26785,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-08-multipage-parts",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Ironbridge Industrial Supply Inc.",
+          "actual": "Ironbridge Industrial Supply Inc.",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "IIS-240918",
+          "actual": "IIS-240918",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-07-08",
+          "actual": "2026-07-08",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "USD",
+          "actual": "USD",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "1759.93",
+          "actual": "1759.93",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "145.19",
+          "actual": "145.19",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "1905.12",
+          "actual": "1905.12",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "32",
+          "actual": "16",
+          "correct": false,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Hex bolt M8 x 40, zinc plated (box of 100)",
+          "actual": "Hex bolt M8 x 40, zinc plated (box of 100)",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "4.00",
+          "actual": "1.00",
+          "correct": false,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "14.20",
+          "actual": "14.20",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "56.80",
+          "actual": "56.80",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Hex nut M8, zinc plated (box of 200)",
+          "actual": "Hex nut M8, zinc plated (box of 200)",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "11.85",
+          "actual": "11.85",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "23.70",
+          "actual": "23.70",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Flat washer M8 (box of 500)",
+          "actual": "Flat washer M8 (box of 500)",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "3.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "9.40",
+          "actual": "9.40",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "28.20",
+          "actual": "28.20",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.description",
+          "expected": "Socket cap screw M6 x 20 (box of 100)",
+          "actual": "Socket cap screw M6 x 20 (box of 100)",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "18.75",
+          "actual": "18.75",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "37.50",
+          "actual": "37.50",
+          "correct": true,
+          "line": 3
+        },
+        {
+          "field": "line.description",
+          "expected": "Threaded rod M10 x 1 m",
+          "actual": "Threaded rod M10 x 1 m",
+          "correct": true,
+          "line": 4
+        },
+        {
+          "field": "line.qty",
+          "expected": "10.00",
+          "actual": "10.00",
+          "correct": true,
+          "line": 4
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "6.30",
+          "actual": "6.30",
+          "correct": true,
+          "line": 4
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "63.00",
+          "actual": "63.00",
+          "correct": true,
+          "line": 4
+        },
+        {
+          "field": "line.description",
+          "expected": "Hose clamp 20-32 mm (pack of 10)",
+          "actual": "Hose clamp 20-32 mm (pack of 10)",
+          "correct": true,
+          "line": 5
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": "5.00",
+          "correct": true,
+          "line": 5
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "12.90",
+          "actual": "12.90",
+          "correct": true,
+          "line": 5
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "64.50",
+          "actual": "64.50",
+          "correct": true,
+          "line": 5
+        },
+        {
+          "field": "line.description",
+          "expected": "Cable ties 300 mm, black (pack of 100)",
+          "actual": "Cable ties 300 mm, black (pack of 100)",
+          "correct": true,
+          "line": 6
+        },
+        {
+          "field": "line.qty",
+          "expected": "6.00",
+          "actual": "6.00",
+          "correct": true,
+          "line": 6
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "8.45",
+          "actual": "8.45",
+          "correct": true,
+          "line": 6
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "50.70",
+          "actual": "50.70",
+          "correct": true,
+          "line": 6
+        },
+        {
+          "field": "line.description",
+          "expected": "Heat shrink tubing kit, 560 pcs",
+          "actual": "Heat shrink tubing kit, 560 pcs",
+          "correct": true,
+          "line": 7
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 7
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "21.99",
+          "actual": "21.99",
+          "correct": true,
+          "line": 7
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "21.99",
+          "actual": "21.99",
+          "correct": true,
+          "line": 7
+        },
+        {
+          "field": "line.description",
+          "expected": "Safety gloves, nitrile, size L (pair)",
+          "actual": "Safety gloves, nitrile, size L (pair)",
+          "correct": true,
+          "line": 8
+        },
+        {
+          "field": "line.qty",
+          "expected": "24.00",
+          "actual": "24.00",
+          "correct": true,
+          "line": 8
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "3.15",
+          "actual": "3.15",
+          "correct": true,
+          "line": 8
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "75.60",
+          "actual": "75.60",
+          "correct": true,
+          "line": 8
+        },
+        {
+          "field": "line.description",
+          "expected": "Safety glasses, clear, anti-fog",
+          "actual": "Safety glasses, clear, anti-fog",
+          "correct": true,
+          "line": 9
+        },
+        {
+          "field": "line.qty",
+          "expected": "12.00",
+          "actual": "12.00",
+          "correct": true,
+          "line": 9
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "4.60",
+          "actual": "4.60",
+          "correct": true,
+          "line": 9
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "55.20",
+          "actual": "55.20",
+          "correct": true,
+          "line": 9
+        },
+        {
+          "field": "line.description",
+          "expected": "Ear plugs, foam (box of 200)",
+          "actual": "Ear plugs, foam (box of 200)",
+          "correct": true,
+          "line": 10
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 10
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "17.80",
+          "actual": "17.80",
+          "correct": true,
+          "line": 10
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "35.60",
+          "actual": "35.60",
+          "correct": true,
+          "line": 10
+        },
+        {
+          "field": "line.description",
+          "expected": "Work light LED 50 W, IP65",
+          "actual": "Work light LED 50 W, IP65",
+          "correct": true,
+          "line": 11
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "3.00",
+          "correct": true,
+          "line": 11
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "44.95",
+          "actual": "44.95",
+          "correct": true,
+          "line": 11
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "134.85",
+          "actual": "134.85",
+          "correct": true,
+          "line": 11
+        },
+        {
+          "field": "line.description",
+          "expected": "Extension cord 25 ft, 12 AWG",
+          "actual": "Extension cord 25 ft, 12 AWG",
+          "correct": true,
+          "line": 12
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 12
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "38.50",
+          "actual": "38.50",
+          "correct": true,
+          "line": 12
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "77.00",
+          "actual": "77.00",
+          "correct": true,
+          "line": 12
+        },
+        {
+          "field": "line.description",
+          "expected": "Duct tape 2 in x 60 yd",
+          "actual": "Duct tape 2 in x 60 yd",
+          "correct": true,
+          "line": 13
+        },
+        {
+          "field": "line.qty",
+          "expected": "8.00",
+          "actual": "8.00",
+          "correct": true,
+          "line": 13
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "7.25",
+          "actual": "7.25",
+          "correct": true,
+          "line": 13
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "58.00",
+          "actual": "58.00",
+          "correct": true,
+          "line": 13
+        },
+        {
+          "field": "line.description",
+          "expected": "Shop towels, blue (roll of 55)",
+          "actual": "Shop towels, blue (roll of 55)",
+          "correct": true,
+          "line": 14
+        },
+        {
+          "field": "line.qty",
+          "expected": "6.00",
+          "actual": "6.00",
+          "correct": true,
+          "line": 14
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "19.99",
+          "actual": "19.99",
+          "correct": true,
+          "line": 14
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "119.94",
+          "actual": "119.94",
+          "correct": true,
+          "line": 14
+        },
+        {
+          "field": "line.description",
+          "expected": "Anti-seize compound, 8 oz",
+          "actual": "Anti-seize compound, 8 oz",
+          "correct": true,
+          "line": 15
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 15
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "12.35",
+          "actual": "12.35",
+          "correct": true,
+          "line": 15
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "24.70",
+          "actual": "24.70",
+          "correct": true,
+          "line": 15
+        },
+        {
+          "field": "line.description",
+          "expected": "Thread locker, medium strength, 10 ml",
+          "actual": null,
+          "correct": false,
+          "line": 16
+        },
+        {
+          "field": "line.qty",
+          "expected": "4.00",
+          "actual": null,
+          "correct": false,
+          "line": 16
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "9.95",
+          "actual": null,
+          "correct": false,
+          "line": 16
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "39.80",
+          "actual": null,
+          "correct": false,
+          "line": 16
+        },
+        {
+          "field": "line.description",
+          "expected": "Penetrating oil, 11 oz spray",
+          "actual": null,
+          "correct": false,
+          "line": 17
+        },
+        {
+          "field": "line.qty",
+          "expected": "6.00",
+          "actual": null,
+          "correct": false,
+          "line": 17
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "6.80",
+          "actual": null,
+          "correct": false,
+          "line": 17
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "40.80",
+          "actual": null,
+          "correct": false,
+          "line": 17
+        },
+        {
+          "field": "line.description",
+          "expected": "Drill bit set, cobalt, 29 pcs",
+          "actual": null,
+          "correct": false,
+          "line": 18
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": null,
+          "correct": false,
+          "line": 18
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "64.00",
+          "actual": null,
+          "correct": false,
+          "line": 18
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "64.00",
+          "actual": null,
+          "correct": false,
+          "line": 18
+        },
+        {
+          "field": "line.description",
+          "expected": "Step drill bit 1/4 - 1-3/8 in",
+          "actual": null,
+          "correct": false,
+          "line": 19
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": null,
+          "correct": false,
+          "line": 19
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "27.40",
+          "actual": null,
+          "correct": false,
+          "line": 19
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "54.80",
+          "actual": null,
+          "correct": false,
+          "line": 19
+        },
+        {
+          "field": "line.description",
+          "expected": "Grinding disc 4-1/2 in (pack of 10)",
+          "actual": null,
+          "correct": false,
+          "line": 20
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": null,
+          "correct": false,
+          "line": 20
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "23.50",
+          "actual": null,
+          "correct": false,
+          "line": 20
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "70.50",
+          "actual": null,
+          "correct": false,
+          "line": 20
+        },
+        {
+          "field": "line.description",
+          "expected": "Cut-off wheel 4-1/2 in (pack of 25)",
+          "actual": null,
+          "correct": false,
+          "line": 21
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": null,
+          "correct": false,
+          "line": 21
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "31.25",
+          "actual": null,
+          "correct": false,
+          "line": 21
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "62.50",
+          "actual": null,
+          "correct": false,
+          "line": 21
+        },
+        {
+          "field": "line.description",
+          "expected": "Flap disc 60 grit, 4-1/2 in",
+          "actual": null,
+          "correct": false,
+          "line": 22
+        },
+        {
+          "field": "line.qty",
+          "expected": "10.00",
+          "actual": null,
+          "correct": false,
+          "line": 22
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "5.90",
+          "actual": null,
+          "correct": false,
+          "line": 22
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "59.00",
+          "actual": null,
+          "correct": false,
+          "line": 22
+        },
+        {
+          "field": "line.description",
+          "expected": "Wire brush, stainless, 4 in",
+          "actual": null,
+          "correct": false,
+          "line": 23
+        },
+        {
+          "field": "line.qty",
+          "expected": "4.00",
+          "actual": null,
+          "correct": false,
+          "line": 23
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "8.75",
+          "actual": null,
+          "correct": false,
+          "line": 23
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "35.00",
+          "actual": null,
+          "correct": false,
+          "line": 23
+        },
+        {
+          "field": "line.description",
+          "expected": "Measuring tape 25 ft",
+          "actual": null,
+          "correct": false,
+          "line": 24
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": null,
+          "correct": false,
+          "line": 24
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "11.20",
+          "actual": null,
+          "correct": false,
+          "line": 24
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "56.00",
+          "actual": null,
+          "correct": false,
+          "line": 24
+        },
+        {
+          "field": "line.description",
+          "expected": "Utility knife, retractable",
+          "actual": null,
+          "correct": false,
+          "line": 25
+        },
+        {
+          "field": "line.qty",
+          "expected": "6.00",
+          "actual": null,
+          "correct": false,
+          "line": 25
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "9.85",
+          "actual": null,
+          "correct": false,
+          "line": 25
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "59.10",
+          "actual": null,
+          "correct": false,
+          "line": 25
+        },
+        {
+          "field": "line.description",
+          "expected": "Utility blades (pack of 100)",
+          "actual": null,
+          "correct": false,
+          "line": 26
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": null,
+          "correct": false,
+          "line": 26
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "18.40",
+          "actual": null,
+          "correct": false,
+          "line": 26
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "36.80",
+          "actual": null,
+          "correct": false,
+          "line": 26
+        },
+        {
+          "field": "line.description",
+          "expected": "Zip-top parts bags 4 x 6 in (pack of 500)",
+          "actual": null,
+          "correct": false,
+          "line": 27
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": null,
+          "correct": false,
+          "line": 27
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "22.60",
+          "actual": null,
+          "correct": false,
+          "line": 27
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "22.60",
+          "actual": null,
+          "correct": false,
+          "line": 27
+        },
+        {
+          "field": "line.description",
+          "expected": "Label tape 3/4 in, black on white",
+          "actual": null,
+          "correct": false,
+          "line": 28
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": null,
+          "correct": false,
+          "line": 28
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "13.95",
+          "actual": null,
+          "correct": false,
+          "line": 28
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "41.85",
+          "actual": null,
+          "correct": false,
+          "line": 28
+        },
+        {
+          "field": "line.description",
+          "expected": "Marking paint, fluorescent orange",
+          "actual": null,
+          "correct": false,
+          "line": 29
+        },
+        {
+          "field": "line.qty",
+          "expected": "12.00",
+          "actual": null,
+          "correct": false,
+          "line": 29
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "7.40",
+          "actual": null,
+          "correct": false,
+          "line": 29
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "88.80",
+          "actual": null,
+          "correct": false,
+          "line": 29
+        },
+        {
+          "field": "line.description",
+          "expected": "Pipe thread sealant tape (pack of 10)",
+          "actual": null,
+          "correct": false,
+          "line": 30
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": null,
+          "correct": false,
+          "line": 30
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "10.50",
+          "actual": null,
+          "correct": false,
+          "line": 30
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "52.50",
+          "actual": null,
+          "correct": false,
+          "line": 30
+        },
+        {
+          "field": "line.description",
+          "expected": "Spray lubricant, silicone, 11 oz",
+          "actual": null,
+          "correct": false,
+          "line": 31
+        },
+        {
+          "field": "line.qty",
+          "expected": "6.00",
+          "actual": null,
+          "correct": false,
+          "line": 31
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "8.10",
+          "actual": null,
+          "correct": false,
+          "line": 31
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "48.60",
+          "actual": null,
+          "correct": false,
+          "line": 31
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [
+        "LinesSumToNetOrTotal",
+        "LineAmountsMatch"
+      ],
+      "inputTokens": 1752,
+      "outputTokens": 928,
+      "latencyMs": 94139,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-09-total-mismatch",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Fernhill Garden Services Ltd",
+          "actual": "Fernhill Garden Services Ltd",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "FGS-0712",
+          "actual": "FGS-0712",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-07-31",
+          "actual": "2026-07-31",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "GBP",
+          "actual": "GBP",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "455.00",
+          "actual": "455.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "91.00",
+          "actual": "91.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "564.00",
+          "actual": "564.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Monthly garden maintenance, July",
+          "actual": "Monthly garden maintenance, July 1",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "320.00",
+          "actual": "320.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "320.00",
+          "actual": "320.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Hedge trimming (hours)",
+          "actual": "Hedge trimming (hours)",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "3.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "45.00",
+          "actual": "45.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "135.00",
+          "actual": "135.00",
+          "correct": true,
+          "line": 1
+        }
+      ],
+      "expectedIssues": [
+        "NetPlusVatEqualsTotal"
+      ],
+      "raisedIssues": [
+        "NetPlusVatEqualsTotal"
+      ],
+      "inputTokens": 653,
+      "outputTokens": 191,
+      "latencyMs": 14579,
+      "cost": 0,
+      "error": null,
+      "allCorrect": true,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": false,
+      "misreadFlagged": false
+    },
+    {
+      "sample": "synthetic-10-lines-dont-add-up",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Summit Coffee Roasters",
+          "actual": "Summit Coffee Roasters",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "SCR-20260815",
+          "actual": "SCR-20260815",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-08-15",
+          "actual": "2026-08-15",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "USD",
+          "actual": "USD",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "612.50",
+          "actual": "612.50",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "42.88",
+          "actual": "42.88",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "655.38",
+          "actual": "655.38",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Ethiopia Yirgacheffe, whole bean, 5 lb",
+          "actual": "Ethiopia Yirgacheffe, whole bean, 5 lb",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "5.00",
+          "actual": "5.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "72.50",
+          "actual": "72.50",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "362.50",
+          "actual": "362.50",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Colombia Supremo, whole bean, 5 lb",
+          "actual": "Colombia Supremo, whole bean, 5 lb",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "3.00",
+          "actual": "5.00",
+          "correct": false,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "65.00",
+          "actual": "65.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "195.00",
+          "actual": "195.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Freight",
+          "actual": "Freight",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "30.00",
+          "actual": "30.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "30.00",
+          "actual": "30.00",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [
+        "LinesSumToNetOrTotal"
+      ],
+      "raisedIssues": [
+        "LinesSumToNetOrTotal",
+        "LineAmountsMatch"
+      ],
+      "inputTokens": 672,
+      "outputTokens": 251,
+      "latencyMs": 18377,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": true
+    },
+    {
+      "sample": "synthetic-11-fr-image",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Atelier Lumi\u00E8re SARL",
+          "actual": "Atelier Lumi\u00E8re SARL",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "F-2026-0092",
+          "actual": "Facture F-2026-0092",
+          "correct": false,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-05-07",
+          "actual": "2026-05-07",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "411.00",
+          "actual": "411.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "82.20",
+          "actual": "82.20",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "493.20",
+          "actual": "493.20",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Lampe de bureau en laiton",
+          "actual": "Lampe de bureau en laiton",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "2.00",
+          "actual": "2.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "129.00",
+          "actual": "129.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "258.00",
+          "actual": "258.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Abat-jour en lin naturel",
+          "actual": "Abat-jour en lin naturel",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "4.00",
+          "actual": "4.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "34.50",
+          "actual": "34.50",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "138.00",
+          "actual": "138.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Frais de livraison",
+          "actual": "Frais de livraison",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "1.00",
+          "actual": "1.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "15.00",
+          "actual": "15.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "15.00",
+          "actual": "15.00",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [],
+      "inputTokens": 2389,
+      "outputTokens": 247,
+      "latencyMs": 369454,
+      "cost": 0,
+      "error": null,
+      "allCorrect": false,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": true,
+      "misreadFlagged": false
+    },
+    {
+      "sample": "synthetic-12-many-reference-numbers",
+      "fields": [
+        {
+          "field": "supplier",
+          "expected": "Westgate Logistics Ltd",
+          "actual": "Westgate Logistics Ltd",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "invoiceNumber",
+          "expected": "WL-INV-88213",
+          "actual": "WL-INV-88213",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "date",
+          "expected": "2026-06-30",
+          "actual": "2026-06-30",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "currency",
+          "expected": "GBP",
+          "actual": "GBP",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "net",
+          "expected": "372.00",
+          "actual": "372.00",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "vat",
+          "expected": "74.40",
+          "actual": "74.40",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "total",
+          "expected": "446.40",
+          "actual": "446.40",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "lineCount",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "line": null
+        },
+        {
+          "field": "line.description",
+          "expected": "Pallet storage, June (per pallet-week)",
+          "actual": "Pallet storage, June (per pallet-week)",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.qty",
+          "expected": "64.00",
+          "actual": "64.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "3.25",
+          "actual": "3.25",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "208.00",
+          "actual": "208.00",
+          "correct": true,
+          "line": 0
+        },
+        {
+          "field": "line.description",
+          "expected": "Inbound handling (per pallet)",
+          "actual": "Inbound handling (per pallet)",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.qty",
+          "expected": "18.00",
+          "actual": "18.00",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "4.10",
+          "actual": "4.10",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "73.80",
+          "actual": "73.80",
+          "correct": true,
+          "line": 1
+        },
+        {
+          "field": "line.description",
+          "expected": "Outbound handling (per pallet)",
+          "actual": "Outbound handling (per pallet)",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.qty",
+          "expected": "22.00",
+          "actual": "22.00",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.unitPrice",
+          "expected": "4.10",
+          "actual": "4.10",
+          "correct": true,
+          "line": 2
+        },
+        {
+          "field": "line.lineTotal",
+          "expected": "90.20",
+          "actual": "90.20",
+          "correct": true,
+          "line": 2
+        }
+      ],
+      "expectedIssues": [],
+      "raisedIssues": [],
+      "inputTokens": 765,
+      "outputTokens": 239,
+      "latencyMs": 19187,
+      "cost": 0,
+      "error": null,
+      "allCorrect": true,
+      "caughtExpectedIssues": true,
+      "falseAlarm": false,
+      "misread": false,
+      "misreadFlagged": false
+    }
+  ],
+  "succeeded": 12,
+  "allFields": [
+    {
+      "field": "supplier",
+      "expected": "Nordlicht B\u00FCrobedarf GmbH",
+      "actual": "Nordlicht B\u00FCrobedarf GmbH",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "RE-2026-00418",
+      "actual": "RE-2026-00418",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-03-12",
+      "actual": "2026-03-12",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "EUR",
+      "actual": "EUR",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "298.45",
+      "actual": "298.45",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "56.71",
+      "actual": "56.71",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "355.16",
+      "actual": "355.16",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "4",
+      "actual": "4",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Kopierpapier A4, 80 g/m\u00B2, 500 Blatt",
+      "actual": "Kopierpapier A4, 80 g/m\u00B2, 500 Blatt",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "10.00",
+      "actual": "1.00",
+      "correct": false,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "4.95",
+      "actual": "4.95",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "49.50",
+      "actual": "49.50",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Toner HP 26A schwarz",
+      "actual": "Toner HP 26A schwarz",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "89.90",
+      "actual": "89.90",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "179.80",
+      "actual": "179.80",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Ordner breit, blau",
+      "actual": "Ordner breit, blau",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "25.00",
+      "actual": "25.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "2.49",
+      "actual": "2.49",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "62.25",
+      "actual": "62.25",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.description",
+      "expected": "Lieferpauschale",
+      "actual": "Lieferpauschale",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "6.90",
+      "actual": "6.90",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "6.90",
+      "actual": "6.90",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "supplier",
+      "expected": "Harbourside Print Co. Ltd",
+      "actual": "Harbourside Print Co. Ltd",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "HPC-7731",
+      "actual": "HPC-7731",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-02-04",
+      "actual": "2026-02-04",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "GBP",
+      "actual": "GBP",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "271.50",
+      "actual": "271.50",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "54.30",
+      "actual": "54.30",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "325.80",
+      "actual": "325.80",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Business cards, 400gsm matt, 500 pcs",
+      "actual": "Business cards, 400gsm matt, 500 pcs",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "500.00",
+      "correct": false,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "38.00",
+      "actual": "38.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "114.00",
+      "actual": "114.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "A1 foam board poster",
+      "actual": "A1 foam board poster",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "4.00",
+      "actual": "4.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "22.50",
+      "actual": "22.50",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "90.00",
+      "actual": "90.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Design proof revision (hours)",
+      "actual": "Design proof revision (hours)",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.50",
+      "actual": "1.50",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "45.00",
+      "actual": "45.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "67.50",
+      "actual": "67.50",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Pinecrest Software LLC",
+      "actual": "Pinecrest Software LLC",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "INV-10077",
+      "actual": "INV-10077",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-03-05",
+      "actual": "2026-03-05",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "USD",
+      "actual": "USD",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "3150.00",
+      "actual": "3150.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "0.00",
+      "actual": "0.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "3150.00",
+      "actual": "3150.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "2",
+      "actual": "2",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Annual license: Analytics Pro (per seat)",
+      "actual": "Annual license: Analytics Pro (per seat)",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": "5.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "480.00",
+      "actual": "480.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "2400.00",
+      "actual": "2400.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Onboarding workshop (remote, half day)",
+      "actual": "Onboarding workshop (remote, half day)",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "750.00",
+      "actual": "750.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "750.00",
+      "actual": "750.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "supplier",
+      "expected": "Anadolu Ofis Malzemeleri A.\u015E.",
+      "actual": "Anadolu Ofis Malzemeleri A.\u015E.",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "ANO2026000153",
+      "actual": "ANO2026000153",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-04-21",
+      "actual": "2026-04-21",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "TRY",
+      "actual": "TRY",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "23087.50",
+      "actual": "23087.50",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "4617.50",
+      "actual": "4617.50",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "27705.00",
+      "actual": "27705.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "4",
+      "correct": false,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "A4 Fotokopi Ka\u011F\u0131d\u0131 (5\u0027li koli)",
+      "actual": "A4 Fotokopi Ka\u011F\u0131d\u0131 (5\u0027li koli)",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "12.00",
+      "actual": "12.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "1149.00",
+      "actual": "1149.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "13788.00",
+      "actual": "13788.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Lazer Yaz\u0131c\u0131 Toneri",
+      "actual": "Lazer Yaz\u0131c\u0131 Toneri",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "3.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "2450.00",
+      "actual": "2450.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "7350.00",
+      "actual": "7350.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Masa D\u00FCzenleyici Set",
+      "actual": "Masa D\u00FCzenleyici Set",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": "5.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "389.90",
+      "actual": "389.90",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "1949.50",
+      "actual": "1949.50",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Cloverfield Electronics Ltd",
+      "actual": "Cloverfield Electronics Ltd",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "CFE-26-01188",
+      "actual": "CFE-26-01188",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-05-14",
+      "actual": "2026-05-14",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "EUR",
+      "actual": "EUR",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "613.00",
+      "actual": "613.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "140.99",
+      "actual": "140.99",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "753.99",
+      "actual": "753.99",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "USB-C docking station, 11-in-1",
+      "actual": "USB-C docking station, 11-in-1",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "149.00",
+      "actual": "149.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "366.54",
+      "actual": "366.54",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "27\u0022 QHD monitor, height adjustable",
+      "actual": "27\u0022 QHD monitor, height adjustable",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "279.00",
+      "actual": "279.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "343.17",
+      "actual": "343.17",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "HDMI 2.1 cable, 2 m",
+      "actual": "HDMI 2.1 cable, 2 m",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "3.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "12.00",
+      "actual": "12.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "44.28",
+      "actual": "44.28",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Brightwave Studio B.V.",
+      "actual": "Brightwave Studio B.V.",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "2026-0147",
+      "actual": "2026-0147",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-06-02",
+      "actual": "2026-06-02",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "EUR",
+      "actual": "EUR",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "1296.00",
+      "actual": "1296.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "272.16",
+      "actual": "272.16",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "1568.16",
+      "actual": "1568.16",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Website maintenance, Q2 2026",
+      "actual": "Website maintenance, Q2 2026",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "1200.00",
+      "actual": "1200.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "1200.00",
+      "actual": "1200.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Hosting and SSL, 12 months",
+      "actual": "Hosting and SSL, 12 months",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "240.00",
+      "actual": "240.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "240.00",
+      "actual": "240.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Loyalty discount 10%",
+      "actual": "Loyalty discount 10%",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "-144.00",
+      "actual": "-144.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "-144.00",
+      "actual": "-144.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Caf\u00E9 Morgenrot KG",
+      "actual": "Caf\u00E9 Morgenrot KG",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "MR-5519",
+      "actual": "Rechnung MR-5519",
+      "correct": false,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-05-29",
+      "actual": "2026-05-29",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "EUR",
+      "actual": "EUR",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "545.60",
+      "actual": "545.60",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "55.18",
+      "actual": "28.28",
+      "correct": false,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "600.78",
+      "actual": "600.78",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "4",
+      "actual": "4",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Fr\u00FChst\u00FCcksbuffet, pro Person",
+      "actual": "Fr\u00FChst\u00FCcksbuffet, pro Person",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "24.00",
+      "actual": "24.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "14.50",
+      "actual": "14.50",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "348.00",
+      "actual": "348.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Obstplatte, gro\u00DF",
+      "actual": "Obstplatte, gro\u00DF",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "28.00",
+      "actual": "28.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "56.00",
+      "actual": "56.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Kaffee \u0026 Tee Flatrate, pro Person",
+      "actual": "Kaffee \u0026 Tee Flatrate, pro Person",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "24.00",
+      "actual": "24.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "3.80",
+      "actual": "3.80",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "91.20",
+      "actual": "91.20",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.description",
+      "expected": "Orangensaft, 1 l",
+      "actual": "Orangensaft, 1 l",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.qty",
+      "expected": "12.00",
+      "actual": "12.00",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "4.20",
+      "actual": "4.20",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "50.40",
+      "actual": "50.40",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "supplier",
+      "expected": "Ironbridge Industrial Supply Inc.",
+      "actual": "Ironbridge Industrial Supply Inc.",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "IIS-240918",
+      "actual": "IIS-240918",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-07-08",
+      "actual": "2026-07-08",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "USD",
+      "actual": "USD",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "1759.93",
+      "actual": "1759.93",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "145.19",
+      "actual": "145.19",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "1905.12",
+      "actual": "1905.12",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "32",
+      "actual": "16",
+      "correct": false,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Hex bolt M8 x 40, zinc plated (box of 100)",
+      "actual": "Hex bolt M8 x 40, zinc plated (box of 100)",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "4.00",
+      "actual": "1.00",
+      "correct": false,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "14.20",
+      "actual": "14.20",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "56.80",
+      "actual": "56.80",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Hex nut M8, zinc plated (box of 200)",
+      "actual": "Hex nut M8, zinc plated (box of 200)",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "11.85",
+      "actual": "11.85",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "23.70",
+      "actual": "23.70",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Flat washer M8 (box of 500)",
+      "actual": "Flat washer M8 (box of 500)",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "3.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "9.40",
+      "actual": "9.40",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "28.20",
+      "actual": "28.20",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.description",
+      "expected": "Socket cap screw M6 x 20 (box of 100)",
+      "actual": "Socket cap screw M6 x 20 (box of 100)",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "18.75",
+      "actual": "18.75",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "37.50",
+      "actual": "37.50",
+      "correct": true,
+      "line": 3
+    },
+    {
+      "field": "line.description",
+      "expected": "Threaded rod M10 x 1 m",
+      "actual": "Threaded rod M10 x 1 m",
+      "correct": true,
+      "line": 4
+    },
+    {
+      "field": "line.qty",
+      "expected": "10.00",
+      "actual": "10.00",
+      "correct": true,
+      "line": 4
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "6.30",
+      "actual": "6.30",
+      "correct": true,
+      "line": 4
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "63.00",
+      "actual": "63.00",
+      "correct": true,
+      "line": 4
+    },
+    {
+      "field": "line.description",
+      "expected": "Hose clamp 20-32 mm (pack of 10)",
+      "actual": "Hose clamp 20-32 mm (pack of 10)",
+      "correct": true,
+      "line": 5
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": "5.00",
+      "correct": true,
+      "line": 5
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "12.90",
+      "actual": "12.90",
+      "correct": true,
+      "line": 5
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "64.50",
+      "actual": "64.50",
+      "correct": true,
+      "line": 5
+    },
+    {
+      "field": "line.description",
+      "expected": "Cable ties 300 mm, black (pack of 100)",
+      "actual": "Cable ties 300 mm, black (pack of 100)",
+      "correct": true,
+      "line": 6
+    },
+    {
+      "field": "line.qty",
+      "expected": "6.00",
+      "actual": "6.00",
+      "correct": true,
+      "line": 6
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "8.45",
+      "actual": "8.45",
+      "correct": true,
+      "line": 6
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "50.70",
+      "actual": "50.70",
+      "correct": true,
+      "line": 6
+    },
+    {
+      "field": "line.description",
+      "expected": "Heat shrink tubing kit, 560 pcs",
+      "actual": "Heat shrink tubing kit, 560 pcs",
+      "correct": true,
+      "line": 7
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 7
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "21.99",
+      "actual": "21.99",
+      "correct": true,
+      "line": 7
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "21.99",
+      "actual": "21.99",
+      "correct": true,
+      "line": 7
+    },
+    {
+      "field": "line.description",
+      "expected": "Safety gloves, nitrile, size L (pair)",
+      "actual": "Safety gloves, nitrile, size L (pair)",
+      "correct": true,
+      "line": 8
+    },
+    {
+      "field": "line.qty",
+      "expected": "24.00",
+      "actual": "24.00",
+      "correct": true,
+      "line": 8
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "3.15",
+      "actual": "3.15",
+      "correct": true,
+      "line": 8
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "75.60",
+      "actual": "75.60",
+      "correct": true,
+      "line": 8
+    },
+    {
+      "field": "line.description",
+      "expected": "Safety glasses, clear, anti-fog",
+      "actual": "Safety glasses, clear, anti-fog",
+      "correct": true,
+      "line": 9
+    },
+    {
+      "field": "line.qty",
+      "expected": "12.00",
+      "actual": "12.00",
+      "correct": true,
+      "line": 9
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "4.60",
+      "actual": "4.60",
+      "correct": true,
+      "line": 9
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "55.20",
+      "actual": "55.20",
+      "correct": true,
+      "line": 9
+    },
+    {
+      "field": "line.description",
+      "expected": "Ear plugs, foam (box of 200)",
+      "actual": "Ear plugs, foam (box of 200)",
+      "correct": true,
+      "line": 10
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 10
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "17.80",
+      "actual": "17.80",
+      "correct": true,
+      "line": 10
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "35.60",
+      "actual": "35.60",
+      "correct": true,
+      "line": 10
+    },
+    {
+      "field": "line.description",
+      "expected": "Work light LED 50 W, IP65",
+      "actual": "Work light LED 50 W, IP65",
+      "correct": true,
+      "line": 11
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "3.00",
+      "correct": true,
+      "line": 11
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "44.95",
+      "actual": "44.95",
+      "correct": true,
+      "line": 11
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "134.85",
+      "actual": "134.85",
+      "correct": true,
+      "line": 11
+    },
+    {
+      "field": "line.description",
+      "expected": "Extension cord 25 ft, 12 AWG",
+      "actual": "Extension cord 25 ft, 12 AWG",
+      "correct": true,
+      "line": 12
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 12
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "38.50",
+      "actual": "38.50",
+      "correct": true,
+      "line": 12
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "77.00",
+      "actual": "77.00",
+      "correct": true,
+      "line": 12
+    },
+    {
+      "field": "line.description",
+      "expected": "Duct tape 2 in x 60 yd",
+      "actual": "Duct tape 2 in x 60 yd",
+      "correct": true,
+      "line": 13
+    },
+    {
+      "field": "line.qty",
+      "expected": "8.00",
+      "actual": "8.00",
+      "correct": true,
+      "line": 13
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "7.25",
+      "actual": "7.25",
+      "correct": true,
+      "line": 13
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "58.00",
+      "actual": "58.00",
+      "correct": true,
+      "line": 13
+    },
+    {
+      "field": "line.description",
+      "expected": "Shop towels, blue (roll of 55)",
+      "actual": "Shop towels, blue (roll of 55)",
+      "correct": true,
+      "line": 14
+    },
+    {
+      "field": "line.qty",
+      "expected": "6.00",
+      "actual": "6.00",
+      "correct": true,
+      "line": 14
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "19.99",
+      "actual": "19.99",
+      "correct": true,
+      "line": 14
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "119.94",
+      "actual": "119.94",
+      "correct": true,
+      "line": 14
+    },
+    {
+      "field": "line.description",
+      "expected": "Anti-seize compound, 8 oz",
+      "actual": "Anti-seize compound, 8 oz",
+      "correct": true,
+      "line": 15
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 15
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "12.35",
+      "actual": "12.35",
+      "correct": true,
+      "line": 15
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "24.70",
+      "actual": "24.70",
+      "correct": true,
+      "line": 15
+    },
+    {
+      "field": "line.description",
+      "expected": "Thread locker, medium strength, 10 ml",
+      "actual": null,
+      "correct": false,
+      "line": 16
+    },
+    {
+      "field": "line.qty",
+      "expected": "4.00",
+      "actual": null,
+      "correct": false,
+      "line": 16
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "9.95",
+      "actual": null,
+      "correct": false,
+      "line": 16
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "39.80",
+      "actual": null,
+      "correct": false,
+      "line": 16
+    },
+    {
+      "field": "line.description",
+      "expected": "Penetrating oil, 11 oz spray",
+      "actual": null,
+      "correct": false,
+      "line": 17
+    },
+    {
+      "field": "line.qty",
+      "expected": "6.00",
+      "actual": null,
+      "correct": false,
+      "line": 17
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "6.80",
+      "actual": null,
+      "correct": false,
+      "line": 17
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "40.80",
+      "actual": null,
+      "correct": false,
+      "line": 17
+    },
+    {
+      "field": "line.description",
+      "expected": "Drill bit set, cobalt, 29 pcs",
+      "actual": null,
+      "correct": false,
+      "line": 18
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": null,
+      "correct": false,
+      "line": 18
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "64.00",
+      "actual": null,
+      "correct": false,
+      "line": 18
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "64.00",
+      "actual": null,
+      "correct": false,
+      "line": 18
+    },
+    {
+      "field": "line.description",
+      "expected": "Step drill bit 1/4 - 1-3/8 in",
+      "actual": null,
+      "correct": false,
+      "line": 19
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": null,
+      "correct": false,
+      "line": 19
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "27.40",
+      "actual": null,
+      "correct": false,
+      "line": 19
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "54.80",
+      "actual": null,
+      "correct": false,
+      "line": 19
+    },
+    {
+      "field": "line.description",
+      "expected": "Grinding disc 4-1/2 in (pack of 10)",
+      "actual": null,
+      "correct": false,
+      "line": 20
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": null,
+      "correct": false,
+      "line": 20
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "23.50",
+      "actual": null,
+      "correct": false,
+      "line": 20
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "70.50",
+      "actual": null,
+      "correct": false,
+      "line": 20
+    },
+    {
+      "field": "line.description",
+      "expected": "Cut-off wheel 4-1/2 in (pack of 25)",
+      "actual": null,
+      "correct": false,
+      "line": 21
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": null,
+      "correct": false,
+      "line": 21
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "31.25",
+      "actual": null,
+      "correct": false,
+      "line": 21
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "62.50",
+      "actual": null,
+      "correct": false,
+      "line": 21
+    },
+    {
+      "field": "line.description",
+      "expected": "Flap disc 60 grit, 4-1/2 in",
+      "actual": null,
+      "correct": false,
+      "line": 22
+    },
+    {
+      "field": "line.qty",
+      "expected": "10.00",
+      "actual": null,
+      "correct": false,
+      "line": 22
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "5.90",
+      "actual": null,
+      "correct": false,
+      "line": 22
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "59.00",
+      "actual": null,
+      "correct": false,
+      "line": 22
+    },
+    {
+      "field": "line.description",
+      "expected": "Wire brush, stainless, 4 in",
+      "actual": null,
+      "correct": false,
+      "line": 23
+    },
+    {
+      "field": "line.qty",
+      "expected": "4.00",
+      "actual": null,
+      "correct": false,
+      "line": 23
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "8.75",
+      "actual": null,
+      "correct": false,
+      "line": 23
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "35.00",
+      "actual": null,
+      "correct": false,
+      "line": 23
+    },
+    {
+      "field": "line.description",
+      "expected": "Measuring tape 25 ft",
+      "actual": null,
+      "correct": false,
+      "line": 24
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": null,
+      "correct": false,
+      "line": 24
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "11.20",
+      "actual": null,
+      "correct": false,
+      "line": 24
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "56.00",
+      "actual": null,
+      "correct": false,
+      "line": 24
+    },
+    {
+      "field": "line.description",
+      "expected": "Utility knife, retractable",
+      "actual": null,
+      "correct": false,
+      "line": 25
+    },
+    {
+      "field": "line.qty",
+      "expected": "6.00",
+      "actual": null,
+      "correct": false,
+      "line": 25
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "9.85",
+      "actual": null,
+      "correct": false,
+      "line": 25
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "59.10",
+      "actual": null,
+      "correct": false,
+      "line": 25
+    },
+    {
+      "field": "line.description",
+      "expected": "Utility blades (pack of 100)",
+      "actual": null,
+      "correct": false,
+      "line": 26
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": null,
+      "correct": false,
+      "line": 26
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "18.40",
+      "actual": null,
+      "correct": false,
+      "line": 26
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "36.80",
+      "actual": null,
+      "correct": false,
+      "line": 26
+    },
+    {
+      "field": "line.description",
+      "expected": "Zip-top parts bags 4 x 6 in (pack of 500)",
+      "actual": null,
+      "correct": false,
+      "line": 27
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": null,
+      "correct": false,
+      "line": 27
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "22.60",
+      "actual": null,
+      "correct": false,
+      "line": 27
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "22.60",
+      "actual": null,
+      "correct": false,
+      "line": 27
+    },
+    {
+      "field": "line.description",
+      "expected": "Label tape 3/4 in, black on white",
+      "actual": null,
+      "correct": false,
+      "line": 28
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": null,
+      "correct": false,
+      "line": 28
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "13.95",
+      "actual": null,
+      "correct": false,
+      "line": 28
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "41.85",
+      "actual": null,
+      "correct": false,
+      "line": 28
+    },
+    {
+      "field": "line.description",
+      "expected": "Marking paint, fluorescent orange",
+      "actual": null,
+      "correct": false,
+      "line": 29
+    },
+    {
+      "field": "line.qty",
+      "expected": "12.00",
+      "actual": null,
+      "correct": false,
+      "line": 29
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "7.40",
+      "actual": null,
+      "correct": false,
+      "line": 29
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "88.80",
+      "actual": null,
+      "correct": false,
+      "line": 29
+    },
+    {
+      "field": "line.description",
+      "expected": "Pipe thread sealant tape (pack of 10)",
+      "actual": null,
+      "correct": false,
+      "line": 30
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": null,
+      "correct": false,
+      "line": 30
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "10.50",
+      "actual": null,
+      "correct": false,
+      "line": 30
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "52.50",
+      "actual": null,
+      "correct": false,
+      "line": 30
+    },
+    {
+      "field": "line.description",
+      "expected": "Spray lubricant, silicone, 11 oz",
+      "actual": null,
+      "correct": false,
+      "line": 31
+    },
+    {
+      "field": "line.qty",
+      "expected": "6.00",
+      "actual": null,
+      "correct": false,
+      "line": 31
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "8.10",
+      "actual": null,
+      "correct": false,
+      "line": 31
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "48.60",
+      "actual": null,
+      "correct": false,
+      "line": 31
+    },
+    {
+      "field": "supplier",
+      "expected": "Fernhill Garden Services Ltd",
+      "actual": "Fernhill Garden Services Ltd",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "FGS-0712",
+      "actual": "FGS-0712",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-07-31",
+      "actual": "2026-07-31",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "GBP",
+      "actual": "GBP",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "455.00",
+      "actual": "455.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "91.00",
+      "actual": "91.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "564.00",
+      "actual": "564.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "2",
+      "actual": "2",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Monthly garden maintenance, July",
+      "actual": "Monthly garden maintenance, July 1",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "320.00",
+      "actual": "320.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "320.00",
+      "actual": "320.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Hedge trimming (hours)",
+      "actual": "Hedge trimming (hours)",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "3.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "45.00",
+      "actual": "45.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "135.00",
+      "actual": "135.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "supplier",
+      "expected": "Summit Coffee Roasters",
+      "actual": "Summit Coffee Roasters",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "SCR-20260815",
+      "actual": "SCR-20260815",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-08-15",
+      "actual": "2026-08-15",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "USD",
+      "actual": "USD",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "612.50",
+      "actual": "612.50",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "42.88",
+      "actual": "42.88",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "655.38",
+      "actual": "655.38",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Ethiopia Yirgacheffe, whole bean, 5 lb",
+      "actual": "Ethiopia Yirgacheffe, whole bean, 5 lb",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "5.00",
+      "actual": "5.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "72.50",
+      "actual": "72.50",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "362.50",
+      "actual": "362.50",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Colombia Supremo, whole bean, 5 lb",
+      "actual": "Colombia Supremo, whole bean, 5 lb",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "3.00",
+      "actual": "5.00",
+      "correct": false,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "65.00",
+      "actual": "65.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "195.00",
+      "actual": "195.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Freight",
+      "actual": "Freight",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "30.00",
+      "actual": "30.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "30.00",
+      "actual": "30.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Atelier Lumi\u00E8re SARL",
+      "actual": "Atelier Lumi\u00E8re SARL",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "F-2026-0092",
+      "actual": "Facture F-2026-0092",
+      "correct": false,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-05-07",
+      "actual": "2026-05-07",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "EUR",
+      "actual": "EUR",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "411.00",
+      "actual": "411.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "82.20",
+      "actual": "82.20",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "493.20",
+      "actual": "493.20",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Lampe de bureau en laiton",
+      "actual": "Lampe de bureau en laiton",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "2.00",
+      "actual": "2.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "129.00",
+      "actual": "129.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "258.00",
+      "actual": "258.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Abat-jour en lin naturel",
+      "actual": "Abat-jour en lin naturel",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "4.00",
+      "actual": "4.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "34.50",
+      "actual": "34.50",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "138.00",
+      "actual": "138.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Frais de livraison",
+      "actual": "Frais de livraison",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "1.00",
+      "actual": "1.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "15.00",
+      "actual": "15.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "15.00",
+      "actual": "15.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "supplier",
+      "expected": "Westgate Logistics Ltd",
+      "actual": "Westgate Logistics Ltd",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "invoiceNumber",
+      "expected": "WL-INV-88213",
+      "actual": "WL-INV-88213",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "date",
+      "expected": "2026-06-30",
+      "actual": "2026-06-30",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "currency",
+      "expected": "GBP",
+      "actual": "GBP",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "net",
+      "expected": "372.00",
+      "actual": "372.00",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "vat",
+      "expected": "74.40",
+      "actual": "74.40",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "total",
+      "expected": "446.40",
+      "actual": "446.40",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "lineCount",
+      "expected": "3",
+      "actual": "3",
+      "correct": true,
+      "line": null
+    },
+    {
+      "field": "line.description",
+      "expected": "Pallet storage, June (per pallet-week)",
+      "actual": "Pallet storage, June (per pallet-week)",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.qty",
+      "expected": "64.00",
+      "actual": "64.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "3.25",
+      "actual": "3.25",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "208.00",
+      "actual": "208.00",
+      "correct": true,
+      "line": 0
+    },
+    {
+      "field": "line.description",
+      "expected": "Inbound handling (per pallet)",
+      "actual": "Inbound handling (per pallet)",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.qty",
+      "expected": "18.00",
+      "actual": "18.00",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "4.10",
+      "actual": "4.10",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "73.80",
+      "actual": "73.80",
+      "correct": true,
+      "line": 1
+    },
+    {
+      "field": "line.description",
+      "expected": "Outbound handling (per pallet)",
+      "actual": "Outbound handling (per pallet)",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.qty",
+      "expected": "22.00",
+      "actual": "22.00",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.unitPrice",
+      "expected": "4.10",
+      "actual": "4.10",
+      "correct": true,
+      "line": 2
+    },
+    {
+      "field": "line.lineTotal",
+      "expected": "90.20",
+      "actual": "90.20",
+      "correct": true,
+      "line": 2
+    }
+  ]
+}
