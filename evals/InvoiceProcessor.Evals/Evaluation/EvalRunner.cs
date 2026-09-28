@@ -54,7 +54,8 @@ public sealed class EvalRunner(IInvoiceExtractor extractor, EvalPaths paths, int
 
             return new SampleResult(sample, fields, expectedIssues, RaisedIssues(result.Invoice), usage.InputTokens, usage.OutputTokens, usage.LatencyMs, usage.CostEstimate, Error: null);
         }
-        catch (Exception ex) when (ex is not OperationCanceledException)
+        // An HTTP timeout is an OperationCanceledException too, but a failed sample, not a cancelled run.
+        catch (Exception ex) when (ex is not OperationCanceledException || !cancellationToken.IsCancellationRequested)
         {
             var usage = (ex as InvoiceExtractionException)?.Usage;
             return new SampleResult(sample, [], expectedIssues, [], usage?.InputTokens, usage?.OutputTokens, stopwatch.ElapsedMilliseconds, usage?.CostEstimate, ex.Message);
@@ -73,7 +74,8 @@ public sealed class EvalRunner(IInvoiceExtractor extractor, EvalPaths paths, int
 
     private static string PromptVersion()
     {
-        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(PromptLibrary.InvoiceExtractionSystem + PromptLibrary.InvoiceExtractionSchema));
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(
+            PromptLibrary.InvoiceExtractionSystem + PromptLibrary.InvoiceExtractionSchema + PromptLibrary.InvoiceTextInput));
         return Convert.ToHexStringLower(hash)[..8];
     }
 
@@ -93,7 +95,9 @@ public sealed class EvalRunner(IInvoiceExtractor extractor, EvalPaths paths, int
             var mark = result.AllCorrect ? "✓" : "•";
             var issues = result.ExpectedIssues.Count > 0
                 ? (result.CaughtExpectedIssues ? "  validation caught the error" : "  validation MISSED the error")
-                : result.FalseAlarm ? $"  false alarm: {string.Join(", ", result.RaisedIssues)}" : "";
+                : result.FalseAlarm ? $"  false alarm: {string.Join(", ", result.RaisedIssues)}"
+                : result.MisreadFlagged ? $"  misread, flagged: {string.Join(", ", result.RaisedIssues)}"
+                : result.Misread ? "  misread, NOT flagged" : "";
             Console.WriteLine($"  {mark} {result.Sample,-40} {correct,3}/{result.Fields.Count,-3} fields  {result.LatencyMs / 1000.0,5:0.0}s  ${result.Cost:0.0000}{issues}");
 
             foreach (var miss in result.Fields.Where(f => !f.Correct))
@@ -111,7 +115,9 @@ public sealed class EvalRunner(IInvoiceExtractor extractor, EvalPaths paths, int
     public static async Task<string> SaveAsync(EvalRun run, string directory)
     {
         Directory.CreateDirectory(directory);
-        var path = Path.Combine(directory, $"{run.StartedAt:yyyyMMdd-HHmmss}-{run.Model}.json");
+        // Ollama model ids contain ':' (qwen3-vl:8b), which a Windows file name cannot.
+        var model = string.Concat(run.Model.Select(c => Path.GetInvalidFileNameChars().Contains(c) || c == ':' ? '_' : c));
+        var path = Path.Combine(directory, $"{run.StartedAt:yyyyMMdd-HHmmss}-{model}.json");
         await File.WriteAllTextAsync(path, JsonSerializer.Serialize(run, ExpectedInvoice.JsonOptions) + Environment.NewLine);
         return path;
     }

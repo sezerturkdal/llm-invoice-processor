@@ -48,6 +48,7 @@ public static class EvalReport
         sb.AppendLine($"| **All fields correct** | {string.Join(" | ", runs.Select(r => Fraction(r.Samples.Count(s => s.AllCorrect), r.Samples.Count)))} |");
         sb.AppendLine($"| Deliberate errors flagged by validation | {string.Join(" | ", runs.Select(r => Fraction(r.Samples.Count(s => s.ExpectedIssues.Count > 0 && s.Error is null && s.CaughtExpectedIssues), r.Samples.Count(s => s.ExpectedIssues.Count > 0))))} |");
         sb.AppendLine($"| Clean invoices without false alarms | {string.Join(" | ", runs.Select(r => Fraction(r.Samples.Count(s => s.ExpectedIssues.Count == 0 && s.Error is null && !s.FalseAlarm), r.Samples.Count(s => s.ExpectedIssues.Count == 0))))} |");
+        sb.AppendLine($"| Misread invoices flagged for review | {string.Join(" | ", runs.Select(r => Fraction(r.Samples.Count(s => s.MisreadFlagged), r.Samples.Count(s => s.Misread))))} |");
         sb.AppendLine($"| Avg latency | {string.Join(" | ", runs.Select(r => (Average(r, s => s.LatencyMs) / 1000).ToString("0.0", Invariant) + " s"))} |");
         sb.AppendLine($"| Avg tokens in / out | {string.Join(" | ", runs.Select(r => $"{Average(r, s => s.InputTokens ?? 0):0} / {Average(r, s => s.OutputTokens ?? 0):0}"))} |");
         sb.AppendLine($"| Avg cost per invoice | {string.Join(" | ", runs.Select(r => "$" + Average(r, s => (double)(s.Cost ?? 0)).ToString("0.0000", Invariant)))} |");

@@ -130,6 +130,63 @@ public class InvoiceValidatorTests
         Assert.Equal(["lines"], issues.Select(i => i.Field));
     }
 
+    // Qty × unit price = line total
+
+    [Fact]
+    public void Misread_quantity_is_flagged_even_when_the_sums_add_up()
+    {
+        // What a small model read from "10 × 4,95 = 49,50": the totals are right, the quantity is not.
+        var invoice = ValidInvoice(lines: [49.50m], net: 49.50m, vat: 9.41m, total: 58.91m);
+        invoice.Lines[0].Description = "Copy paper A4";
+        invoice.Lines[0].Qty = 1;
+        invoice.Lines[0].UnitPrice = 4.95m;
+
+        var issue = Assert.Single(Validate(invoice));
+
+        Assert.Equal("lines", issue.Field);
+        Assert.Equal(ValidationRules.LineAmountsMatch, issue.Rule);
+        Assert.Equal("Line 1 (Copy paper A4): 1 × 4.95 = 4.95, but the line total is 49.50.", issue.Message);
+    }
+
+    [Fact]
+    public void Each_inconsistent_line_is_reported()
+    {
+        var invoice = ValidInvoice(lines: [10m, 20m, 30m], net: 60m, vat: 12m, total: 72m);
+        invoice.Lines[0].Qty = 2;
+        invoice.Lines[2].UnitPrice = 3m;
+
+        var issues = Validate(invoice).Where(i => i.Rule == ValidationRules.LineAmountsMatch).ToList();
+
+        Assert.Equal(2, issues.Count);
+        Assert.StartsWith("Line 1 ", issues[0].Message);
+        Assert.StartsWith("Line 3 ", issues[1].Message);
+    }
+
+    [Theory]
+    [InlineData(3, 0.33, 1.00)]     // unit price 0.333… printed rounded
+    [InlineData(12, 1.67, 20.00)]   // 1.666… × 12
+    [InlineData(1.5, 9.99, 14.99)]  // fractional quantity, rounded total
+    [InlineData(1, -10.00, -10.00)] // discount line
+    public void Rounded_unit_prices_are_not_flagged(decimal qty, decimal unitPrice, decimal lineTotal)
+    {
+        var invoice = ValidInvoice(lines: [lineTotal], net: lineTotal, vat: 0m, total: lineTotal);
+        invoice.Lines[0].Qty = qty;
+        invoice.Lines[0].UnitPrice = unitPrice;
+
+        Assert.DoesNotContain(Validate(invoice), i => i.Rule == ValidationRules.LineAmountsMatch);
+    }
+
+    [Fact]
+    public void Gross_line_totals_are_not_checked_line_by_line()
+    {
+        // Unit price before tax, line total after 23 % VAT, as synthetic-05 prints them.
+        var invoice = ValidInvoice(lines: [366.54m], net: 298.00m, vat: 68.54m, total: 366.54m);
+        invoice.Lines[0].Qty = 2;
+        invoice.Lines[0].UnitPrice = 149.00m;
+
+        Assert.Empty(Validate(invoice));
+    }
+
     // Net + VAT = total
 
     [Fact]

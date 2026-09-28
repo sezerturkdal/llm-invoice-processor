@@ -30,6 +30,14 @@ public sealed record SampleResult(
     /// <summary>Every deliberate error was flagged by validation.</summary>
     public bool CaughtExpectedIssues => ExpectedIssues.All(RaisedIssues.Contains);
 
-    /// <summary>Validation flagged something on a sample that has no deliberate error.</summary>
-    public bool FalseAlarm => ExpectedIssues.Count == 0 && RaisedIssues.Count > 0;
+    /// <summary>
+    /// Validation flagged something on a sample that has no deliberate error and was read correctly. A flag
+    /// on a misread sample is the validation doing its job (see <see cref="MisreadFlagged"/>), not an alarm.
+    /// </summary>
+    public bool FalseAlarm => ExpectedIssues.Count == 0 && AllCorrect && RaisedIssues.Count > 0;
+
+    /// <summary>The model got a field wrong, and validation flagged the invoice for the reviewer.</summary>
+    public bool Misread => Error is null && !AllCorrect;
+
+    public bool MisreadFlagged => Misread && RaisedIssues.Count > 0;
 }

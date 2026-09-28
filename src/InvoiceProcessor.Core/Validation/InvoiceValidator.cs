@@ -25,6 +25,7 @@ public static class InvoiceValidator
 
         CheckRequiredFields(invoice, issues);
         CheckLinesSumToNetOrTotal(invoice, issues);
+        CheckLineAmounts(invoice, issues);
         CheckNetPlusVatEqualsTotal(invoice, issues);
         CheckDateNotInFuture(invoice, context.Today, issues);
         CheckDuplicate(invoice, context.Duplicates, issues);
@@ -71,6 +72,34 @@ public static class InvoiceValidator
         if (invoice.Net is not null)
         {
             issues.Add(Issue("net", ValidationRules.LinesSumToNetOrTotal, message));
+        }
+    }
+
+    // Catches a misread quantity or price that the sums miss, e.g. qty 1 instead of 10 with the line total
+    // still read right. Invoices with gross line totals (summing to the total, not the net) print unit prices
+    // before tax and totals after it, at a rate the line does not show, so they are not checked line by line.
+    private static void CheckLineAmounts(Invoice invoice, List<ValidationIssue> issues)
+    {
+        var sum = invoice.Lines.Sum(l => l.LineTotal);
+        if (!Matches(sum, invoice.Net) && Matches(sum, invoice.Total))
+        {
+            return;
+        }
+
+        foreach (var (line, index) in invoice.Lines.Select((line, index) => (line, index)))
+        {
+            var product = line.Qty * line.UnitPrice;
+
+            // A unit price printed to the cent can be off by half a cent per unit.
+            var tolerance = AmountTolerance + Math.Abs(line.Qty) * 0.005m;
+            if (Math.Abs(product - line.LineTotal) <= tolerance)
+            {
+                continue;
+            }
+
+            var message = Invariant(
+                $"Line {index + 1} ({line.Description}): {line.Qty:0.###} × {line.UnitPrice:0.00} = {product:0.00}, but the line total is {line.LineTotal:0.00}.");
+            issues.Add(Issue("lines", ValidationRules.LineAmountsMatch, message));
         }
     }
 
@@ -130,6 +159,7 @@ public static class ValidationRules
 {
     public const string RequiredFields = nameof(RequiredFields);
     public const string LinesSumToNetOrTotal = nameof(LinesSumToNetOrTotal);
+    public const string LineAmountsMatch = nameof(LineAmountsMatch);
     public const string NetPlusVatEqualsTotal = nameof(NetPlusVatEqualsTotal);
     public const string DateNotInFuture = nameof(DateNotInFuture);
     public const string DuplicateInvoiceNumber = nameof(DuplicateInvoiceNumber);
